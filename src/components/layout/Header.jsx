@@ -54,7 +54,7 @@ const Header = () => {
               variant="outline" 
               size="sm"
               className="flex items-center gap-2"
-              onClick={() => window.open('/resume.pdf', '_blank')}
+              onClick={() => window.open('/Daiyong_Kim_s_Resume_for_Android_Engineer.pdf', '_blank')}
             >
               <Download size={16} />
               Resume
@@ -92,6 +92,7 @@ const Header = () => {
                   variant="outline" 
                   size="sm"
                   className="flex items-center justify-center gap-2"
+                  onClick={() => window.open('/Daiyong_Kim_s_Resume_for_Android_Engineer.pdf', '_blank')}
                 >
                   <Download size={16} />
                   Resume
