@@ -24,12 +24,15 @@ const Hero = () => {
           {/* Content */}
           <div className={`transition-all duration-1000 ${isVisible ? 'animate-slide-in-left' : 'opacity-0'}`}>
             <div className="mb-6">
-              <p className="text-primary-600 font-medium text-lg mb-2">
-                {heroContent.greeting}
+              <p className="text-primary-600 font-medium text-xl mb-3">
+                Hi, I'm
               </p>
-              <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
-                <span className="gradient-text">{heroContent.headline}</span>
+              <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-2">
+                <span className="gradient-text">Daiyong Kim</span>
               </h1>
+              <h2 className="text-3xl lg:text-4xl font-semibold text-gray-700 mb-6">
+                Senior Android Developer
+              </h2>
               <p className="text-xl text-gray-600 leading-relaxed mb-8 max-w-2xl">
                 {heroContent.description}
               </p>
