@@ -1,11 +1,11 @@
 export const personalInfo = {
   name: 'Daiyong Kim',
   title: 'Senior Android Developer',
-  subtitle: '10+ Years of Mobile Excellence',
-  email: 'daiyong.kim@example.com',
-  phone: '+1 (555) 123-4567',
-  location: 'San Francisco, CA',
-  linkedin: 'https://linkedin.com/in/daiyongkim',
+  subtitle: '15+ Years of Mobile Excellence',
+  email: 'daiyongg.kim@gmail.com',
+  phone: '949-343-8946',
+  location: 'Irvine, CA',
+  linkedin: 'https://linkedin.com/in/kim-daiyong/',
   github: 'https://github.com/daiyongkim',
   website: 'https://daiyongkim.dev'
 }
@@ -13,7 +13,7 @@ export const personalInfo = {
 export const heroContent = {
   greeting: "Hi, I'm Daiyong Kim",
   headline: "Senior Android Developer",
-  description: "Passionate about crafting exceptional mobile experiences with 10+ years of expertise in Android development, architectural design, and team leadership.",
+  description: "Senior Android Developer with over 15+ years of experience, having led mobile innovation at Samsung Electronics. Strong in designing complex systems and developing high-performance applications leveraging modern technologies.",
   cta: {
     primary: "View My Work",
     secondary: "Download Resume"
@@ -263,7 +263,7 @@ export const contactInfo = {
   title: "Let's Build Something Amazing Together",
   description: "Ready to take your Android project to the next level? I'm always excited to discuss new opportunities and challenges.",
   email: "daiyongg.kim@gmail.com",
-  phone: "+1 (555) 123-4567",
+  phone: "949-343-8946",
   availability: "Available for new opportunities",
   responseTime: "Usually responds within 24 hours",
   specialties: [
