@@ -169,8 +169,8 @@ export const projectsData = [
       downloads: "Global"
     },
     links: {
-      playStore: "Samsung Galaxy devices",
-      github: "Proprietary"
+      playStore: "https://www.youtube.com/watch?v=4yUW-EIMVo4",
+      github: "https://www.samsung.com/us/explore/bixby/sees/"
     },
     status: "Published"
   },

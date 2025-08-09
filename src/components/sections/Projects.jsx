@@ -10,6 +10,26 @@ const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(0)
   const sectionRef = useRef(null)
 
+  const getPlayStoreLinkText = (project) => {
+    if (project.links.playStore.includes('youtube.com')) {
+      return 'Watch Demo Video'
+    } else if (project.links.playStore.includes('play.google.com')) {
+      return 'View on Play Store'
+    } else {
+      return 'View Project'
+    }
+  }
+
+  const getGithubLinkText = (project) => {
+    if (project.links.github.includes('samsung.com')) {
+      return 'Learn More'
+    } else if (project.links.github.includes('github.com')) {
+      return 'Source Code'
+    } else {
+      return 'View Details'
+    }
+  }
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -173,7 +193,7 @@ const Projects = () => {
                         onClick={() => window.open(projectsData[selectedProject].links.playStore, '_blank')}
                       >
                         <ExternalLink size={18} />
-                        View on Play Store
+                        {getPlayStoreLinkText(projectsData[selectedProject])}
                       </Button>
                       <Button 
                         variant="outline"
@@ -181,7 +201,7 @@ const Projects = () => {
                         onClick={() => window.open(projectsData[selectedProject].links.github, '_blank')}
                       >
                         <Github size={18} />
-                        Source Code
+                        {getGithubLinkText(projectsData[selectedProject])}
                       </Button>
                     </div>
                   </Card>
