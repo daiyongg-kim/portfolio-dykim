@@ -35,7 +35,7 @@ const Experience = () => {
             Professional <span className="gradient-text">Experience</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            A decade-long journey of building world-class Android applications and leading high-performing development teams.
+            15+ years of mobile innovation from Samsung Electronics to enterprise banking solutions, leading cutting-edge Android development.
           </p>
         </div>
 

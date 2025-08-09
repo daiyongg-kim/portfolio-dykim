@@ -36,8 +36,8 @@ const Projects = () => {
             Featured <span className="gradient-text">Projects</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Showcasing innovative Android applications that have served millions of users 
-            and demonstrated cutting-edge mobile development expertise.
+            Real-world enterprise and consumer applications from Samsung Electronics, HSBC, and GIT America 
+            that have impacted millions of users globally.
           </p>
         </div>
 

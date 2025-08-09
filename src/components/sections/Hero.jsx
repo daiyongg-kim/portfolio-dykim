@@ -10,6 +10,13 @@ const Hero = () => {
     setIsVisible(true)
   }, [])
 
+  const handleResumeDownload = () => {
+    const resumePath = import.meta.env.DEV 
+      ? '/Daiyong_Kim_s_Resume_for_Android_Engineer.pdf'
+      : '/portfolio-dykim/Daiyong_Kim_s_Resume_for_Android_Engineer.pdf'
+    window.open(resumePath, '_blank')
+  }
+
   return (
     <section id="home" className="min-h-screen relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-primary-50/30">
       {/* Background Elements */}
@@ -68,7 +75,7 @@ const Hero = () => {
                 variant="secondary" 
                 size="lg"
                 className="flex items-center justify-center gap-2"
-                onClick={() => window.open('/Daiyong_Kim_s_Resume_for_Android_Engineer.pdf', '_blank')}
+                onClick={handleResumeDownload}
               >
                 <Download size={20} />
                 {heroContent.cta.secondary}

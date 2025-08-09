@@ -56,8 +56,7 @@ const Skills = () => {
             Technical <span className="gradient-text">Skills</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            A comprehensive toolkit built over 10+ years of Android development, 
-            architecture design, and team leadership experience.
+            A comprehensive technology stack mastered over 15+ years, from Samsung Electronics innovation to enterprise banking solutions.
           </p>
         </div>
 
@@ -182,16 +181,16 @@ const Skills = () => {
                 <h3 className="text-2xl font-bold mb-4">Technology Mastery</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                   <div>
-                    <div className="text-3xl font-bold mb-2">25+</div>
+                    <div className="text-3xl font-bold mb-2">20+</div>
                     <div className="text-primary-100">Technologies Mastered</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold mb-2">10+</div>
+                    <div className="text-3xl font-bold mb-2">15+</div>
                     <div className="text-primary-100">Years of Android</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold mb-2">15+</div>
-                    <div className="text-primary-100">Team Members Mentored</div>
+                    <div className="text-3xl font-bold mb-2">30+</div>
+                    <div className="text-primary-100">Global Team Members</div>
                   </div>
                 </div>
                 <p className="mt-6 text-primary-100">

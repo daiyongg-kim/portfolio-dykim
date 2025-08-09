@@ -6,6 +6,13 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
+  const handleResumeDownload = () => {
+    const resumePath = import.meta.env.DEV 
+      ? '/Daiyong_Kim_s_Resume_for_Android_Engineer.pdf'
+      : '/portfolio-dykim/Daiyong_Kim_s_Resume_for_Android_Engineer.pdf'
+    window.open(resumePath, '_blank')
+  }
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
@@ -54,7 +61,7 @@ const Header = () => {
               variant="outline" 
               size="sm"
               className="flex items-center gap-2"
-              onClick={() => window.open('/Daiyong_Kim_s_Resume_for_Android_Engineer.pdf', '_blank')}
+              onClick={handleResumeDownload}
             >
               <Download size={16} />
               Resume
@@ -92,7 +99,7 @@ const Header = () => {
                   variant="outline" 
                   size="sm"
                   className="flex items-center justify-center gap-2"
-                  onClick={() => window.open('/Daiyong_Kim_s_Resume_for_Android_Engineer.pdf', '_blank')}
+                  onClick={handleResumeDownload}
                 >
                   <Download size={16} />
                   Resume

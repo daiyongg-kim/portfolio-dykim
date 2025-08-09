@@ -6,17 +6,17 @@ const Footer = () => {
   const socialLinks = [
     {
       name: 'GitHub',
-      href: 'https://github.com/daiyongkim',
+      href: 'https://github.com/daiyongg-kim',
       icon: Github
     },
     {
       name: 'LinkedIn', 
-      href: 'https://linkedin.com/in/daiyongkim',
+      href: 'https://linkedin.com/in/kim-daiyong/',
       icon: Linkedin
     },
     {
       name: 'Email',
-      href: 'mailto:daiyong.kim@example.com',
+      href: 'mailto:daiyongg.kim@gmail.com',
       icon: Mail
     }
   ]
@@ -31,7 +31,7 @@ const Footer = () => {
               Daiyong Kim
             </div>
             <p className="text-gray-400 mb-4">
-              Senior Android Developer with 10+ years of experience crafting exceptional mobile experiences.
+              Senior Android Developer with 15+ years of experience at Samsung Electronics, HSBC, and GIT America.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social) => {
@@ -75,11 +75,11 @@ const Footer = () => {
                 Ready to discuss your next Android project?
               </p>
               <a 
-                href="mailto:daiyong.kim@example.com"
+                href="mailto:daiyongg.kim@gmail.com"
                 className="inline-flex items-center text-primary-400 hover:text-primary-300 transition-colors duration-200"
               >
                 <Mail size={16} className="mr-2" />
-                daiyong.kim@example.com
+                daiyongg.kim@gmail.com
               </a>
             </div>
           </div>

@@ -183,9 +183,9 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 📞 Contact
 
 **Daiyong Kim**
-- Email: daiyong.kim@example.com
-- LinkedIn: [linkedin.com/in/daiyongkim](https://linkedin.com/in/daiyongkim)
-- GitHub: [github.com/daiyongkim](https://github.com/daiyongkim)
+- Email: daiyongg.kim@gmail.com
+- LinkedIn: [linkedin.com/in/daiyongkim](https://linkedin.com/in/kim-daiyong/)
+- GitHub: [github.com/daiyongkim](https://github.com/daiyongg-kim)
 
 ---
 
