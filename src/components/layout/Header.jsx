@@ -93,8 +93,9 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 py-4 border-t border-gray-200">
-            <div className="flex flex-col space-y-4">
+          <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg border-t border-gray-200 z-40">
+            <div className="section-container py-6">
+              <div className="flex flex-col space-y-4">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
@@ -121,6 +122,7 @@ const Header = () => {
                 }}>
                   Let's Connect
                 </Button>
+              </div>
               </div>
             </div>
           </div>
