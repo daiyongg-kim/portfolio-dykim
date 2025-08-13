@@ -12,7 +12,7 @@ const Header = () => {
   }
 
   const handleConnectClick = () => {
-    window.open('https://www.linkedin.com/in/kim-daiyong/', '_blank')
+    window.open('https://paypal.me/DaiyongKim?locale.x=en_US&country.x=US', '_blank')
   }
 
   useEffect(() => {
@@ -79,7 +79,7 @@ const Header = () => {
                 <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-b-white"></div>
                 <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-b-gray-200" style={{marginBottom: '-1px'}}></div>
               </div>
-            </div></div>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
