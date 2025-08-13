@@ -11,6 +11,13 @@ const Header = () => {
     window.open(resumePath, '_blank')
   }
 
+  const handleConnectClick = () => {
+    document.getElementById('contact')?.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    })
+  }
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
@@ -64,7 +71,7 @@ const Header = () => {
               <Download size={16} />
               Resume
             </Button>
-            <Button size="sm">
+            <Button size="sm" onClick={handleConnectClick}>
               Let's Connect
             </Button>
           </div>
@@ -102,7 +109,10 @@ const Header = () => {
                   <Download size={16} />
                   Resume
                 </Button>
-                <Button size="sm">
+                <Button size="sm" onClick={() => {
+                  handleConnectClick()
+                  setIsMenuOpen(false) // 모바일 메뉴 닫기
+                }}>
                   Let's Connect
                 </Button>
               </div>
