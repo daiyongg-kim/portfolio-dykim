@@ -7,7 +7,7 @@ export const personalInfo = {
   location: 'Irvine, CA',
   linkedin: 'https://linkedin.com/in/kim-daiyong/',
   github: 'https://github.com/daiyongkim',
-  website: 'https://daiyongkim.dev'
+  website: 'https://daiyongkim.com'
 }
 
 export const heroContent = {

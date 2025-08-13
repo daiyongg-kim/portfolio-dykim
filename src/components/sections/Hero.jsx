@@ -11,9 +11,7 @@ const Hero = () => {
   }, [])
 
   const handleResumeDownload = () => {
-    const resumePath = import.meta.env.DEV 
-      ? '/Daiyong_Kim_s_Resume_for_Android_Engineer.pdf'
-      : '/portfolio-dykim/Daiyong_Kim_s_Resume_for_Android_Engineer.pdf'
+    const resumePath = '/Daiyong_Kim_s_Resume_for_Android_Engineer.pdf'
     window.open(resumePath, '_blank')
   }
 
