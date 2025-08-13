@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Heart } from 'lucide-react'
+import { Github, Linkedin, Mail, Heart, Coffee } from 'lucide-react'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -67,20 +67,38 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Contact Info & Support */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Get In Touch</h3>
-            <div className="space-y-2">
-              <p className="text-gray-400">
-                Ready to discuss your next Android project?
-              </p>
-              <a 
-                href="mailto:daiyongg.kim@gmail.com"
-                className="inline-flex items-center text-primary-400 hover:text-primary-300 transition-colors duration-200"
-              >
-                <Mail size={16} className="mr-2" />
-                daiyongg.kim@gmail.com
-              </a>
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <p className="text-gray-400">
+                  Ready to discuss your next Android project?
+                </p>
+                <a 
+                  href="mailto:daiyongg.kim@gmail.com"
+                  className="inline-flex items-center text-primary-400 hover:text-primary-300 transition-colors duration-200"
+                >
+                  <Mail size={16} className="mr-2" />
+                  daiyongg.kim@gmail.com
+                </a>
+              </div>
+              
+              {/* PayPal Donation */}
+              <div className="pt-4 border-t border-gray-800">
+                <p className="text-gray-400 text-sm mb-3">
+                  If my work helped you, consider buying me a coffee!
+                </p>
+                <a
+                  href="https://paypal.me/DaiyongKim?locale.x=en_US&country.x=US"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-4 py-2 bg-yellow-600 hover:bg-yellow-700 text-white font-medium rounded-lg transition-all duration-200 hover:scale-105 shadow-lg hover:shadow-xl"
+                >
+                  <Coffee size={16} className="mr-2" />
+                  Buy me a coffee
+                </a>
+              </div>
             </div>
           </div>
         </div>
