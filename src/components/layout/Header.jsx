@@ -12,10 +12,7 @@ const Header = () => {
   }
 
   const handleConnectClick = () => {
-    document.getElementById('contact')?.scrollIntoView({ 
-      behavior: 'smooth',
-      block: 'start'
-    })
+    window.open('https://www.linkedin.com/in/kim-daiyong/', '_blank')
   }
 
   useEffect(() => {
