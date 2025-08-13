@@ -70,16 +70,16 @@ const Header = () => {
             </Button>
             <div className="relative group">
               <Button size="sm" onClick={handleConnectClick}>
-                Let's Connect
+                Buy me a coffee
               </Button>
               {/* Tooltip */}
               <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-2 bg-white text-gray-800 text-sm rounded-lg shadow-lg border border-gray-200 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50">
-                Connect to LinkedIn
+                Support my work
                 {/* Arrow */}
                 <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-b-white"></div>
                 <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-b-gray-200" style={{marginBottom: '-1px'}}></div>
               </div>
-            </div>
+            </div></div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -120,7 +120,7 @@ const Header = () => {
                   handleConnectClick()
                   setIsMenuOpen(false) // 모바일 메뉴 닫기
                 }}>
-                  Let's Connect
+                  Buy me a coffee
                 </Button>
               </div>
               </div>
