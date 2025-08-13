@@ -89,15 +89,46 @@ const Footer = () => {
                 <p className="text-gray-400 text-sm mb-3">
                   If my work helped you, consider buying me a coffee!
                 </p>
-                <a
-                  href="https://paypal.me/DaiyongKim?locale.x=en_US&country.x=US"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-4 py-2 bg-yellow-600 hover:bg-yellow-700 text-white font-medium rounded-lg transition-all duration-200 hover:scale-105 shadow-lg hover:shadow-xl"
-                >
-                  <Coffee size={16} className="mr-2" />
-                  Buy me a coffee
-                </a>
+                <div className="relative group">
+                  <a
+                    href="https://paypal.me/DaiyongKim?locale.x=en_US&country.x=US"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-4 py-2 bg-yellow-600 hover:bg-yellow-700 text-white font-medium rounded-lg transition-all duration-200 hover:scale-105 shadow-lg hover:shadow-xl"
+                  >
+                    <Coffee size={16} className="mr-2" />
+                    Buy me a coffee
+                  </a>
+                  {/* Tooltip */}
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-white text-gray-800 text-sm rounded-lg shadow-lg border border-gray-200 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50">
+                    Choose your coffee amount below
+                    {/* Arrow */}
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-white"></div>
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-200" style={{marginTop: '-1px'}}></div>
+                  </div>
+                </div>
+                
+                {/* Amount Selection */}
+                <div className="flex gap-2 mt-3 flex-wrap">
+                  {[
+                    { amount: 1, label: '$1' },
+                    { amount: 2, label: '$2' },
+                    { amount: 5, label: '$5' },
+                    { amount: 10, label: '$10' },
+                    { amount: 25, label: '$25' },
+                    { amount: 50, label: '$50' }
+                  ].map((option) => (
+                    <a
+                      key={option.amount}
+                      href={`https://paypal.me/DaiyongKim/${option.amount}?locale.x=en_US&country.x=US`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-3 py-1 text-sm bg-gray-800 hover:bg-yellow-600 text-gray-300 hover:text-white rounded-md transition-all duration-200 hover:scale-105"
+                    >
+                      {option.label}
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

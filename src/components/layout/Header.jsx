@@ -74,7 +74,7 @@ const Header = () => {
               </Button>
               {/* Tooltip */}
               <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-2 bg-white text-gray-800 text-sm rounded-lg shadow-lg border border-gray-200 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50">
-                Support my work
+                Buy me a coffee ($10)
                 {/* Arrow */}
                 <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-b-white"></div>
                 <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-b-gray-200" style={{marginBottom: '-1px'}}></div>
