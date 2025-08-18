@@ -1,5 +1,7 @@
 # Daiyong Kim - Portfolio Website, vibe coding
 
+*Last updated: 2025-08-17*
+
 A modern, Apple-inspired portfolio website showcasing 10+ years of Android development expertise. Built with React, Vite, and Tailwind CSS for optimal performance and stunning visuals.
 
 ## 🚀 Features
