@@ -11,7 +11,7 @@ const Header = () => {
   }
 
   const handleResumeDownload = () => {
-    const resumePath = '/Daiyong_Kim_s_Resume_for_Android_Engineer.pdf'
+    const resumePath = '/Data_Scientist.pdf'
     window.open(resumePath, '_blank')
   }
 
