@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korea Apartment Price Analysis | Data Analysis Portfolio</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, "system-ui", "Segoe UI", Roboto, sans-serif, "Noto Sans KR";
+            background: #FFFFFF;
+            color: #1C1917;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        section:nth-child(even) {
+            background: #FAFAF9;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: #FFFFFF;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 8vw, 60px);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 24px;
+            color: #1C1917;
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(18px, 3vw, 24px);
+            color: #57534E;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+        }
+
+        .accent {
+            color: #0284C7;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 5vw, 42px);
+            font-weight: 700;
+            margin-bottom: 48px;
+            color: #1C1917;
+        }
+
+        .overview-content {
+            background: #FFFFFF;
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid #F5F5F4;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #444340;
+            transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .overview-content:hover {
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+            transform: translateY(-2px);
+        }
+
+        .pipeline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .pipeline-step {
+            background: #FFFFFF;
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid #F5F5F4;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px;
+            transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .pipeline-step:hover {
+            transform: translateY(-4px);
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 8px 16px;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #0284C7;
+            color: #FFFFFF;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .step-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1C1917;
+            margin-bottom: 12px;
+        }
+
+        .step-desc {
+            font-size: 14px;
+            color: #57534E;
+            line-height: 1.7;
+        }
+
+        .step-desc ul {
+            margin: 8px 0 0 16px;
+            padding: 0;
+        }
+
+        .step-desc li {
+            margin-bottom: 4px;
+        }
+
+        .code-snippet {
+            background: #F5F5F4;
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin-top: 12px;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 12px;
+            color: #1C1917;
+            line-height: 1.6;
+            overflow-x: auto;
+            white-space: pre;
+        }
+
+        .code-comment { color: #A8A29E; }
+        .code-keyword { color: #0284C7; }
+        .code-string { color: #16A34A; }
+        .code-func { color: #A855F7; }
+
+        .download-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+            padding: 6px 14px;
+            background: rgba(2, 132, 199, 0.1);
+            color: #0284C7;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            border: 1px solid rgba(2, 132, 199, 0.2);
+            transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .download-link:hover {
+            background: #0284C7;
+            color: #FFFFFF;
+        }
+
+        .data-table-wrapper {
+            background: #FFFFFF;
+            border-radius: 16px;
+            border: 1px solid #F5F5F4;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px;
+            overflow: hidden;
+        }
+
+        .data-table-header {
+            padding: 20px 24px 16px;
+        }
+
+        .data-table-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1C1917;
+            margin-bottom: 2px;
+        }
+
+        .data-table-subtitle {
+            font-size: 13px;
+            color: #A8A29E;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        .data-table th {
+            background: #FAFAF9;
+            padding: 10px 16px;
+            text-align: left;
+            font-weight: 600;
+            color: #57534E;
+            font-size: 13px;
+            border-bottom: 1px solid #F5F5F4;
+        }
+
+        .data-table td {
+            padding: 10px 16px;
+            border-bottom: 1px solid #F5F5F4;
+            color: #444340;
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table tr:hover td {
+            background: #FAFAF9;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .badge-object { background: rgba(251, 146, 60, 0.15); color: #EA580C; }
+        .badge-int { background: rgba(2, 132, 199, 0.15); color: #0284C7; }
+        .badge-float { background: rgba(168, 85, 247, 0.15); color: #A855F7; }
+
+        .schema-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        @media (max-width: 768px) {
+            .schema-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .stat-card {
+            background: #FFFFFF;
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid #F5F5F4;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px;
+            text-align: center;
+            transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 8px 16px;
+        }
+
+        .stat-number {
+            font-size: clamp(36px, 5vw, 48px);
+            font-weight: 700;
+            color: #0284C7;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #57534E;
+            font-weight: 500;
+        }
+
+        .chart-container {
+            background: #FFFFFF;
+            padding: 32px 24px;
+            border-radius: 16px;
+            border: 1px solid #F5F5F4;
+            margin-bottom: 32px;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 400px;
+        }
+
+        .chart-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: #1C1917;
+        }
+
+        .insights-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .insight-item {
+            background: #FFFFFF;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #0284C7;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px;
+            font-size: 16px;
+            color: #444340;
+            transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .insight-item:hover {
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+            transform: translateX(4px);
+        }
+
+        .insight-item strong {
+            color: #0284C7;
+            font-weight: 600;
+        }
+
+        .tools-section {
+            background: #FAFAF9;
+            padding: 64px 0;
+        }
+
+        .tools-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .tool-tag {
+            background: rgba(2, 132, 199, 0.1);
+            color: #0284C7;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(2, 132, 199, 0.2);
+        }
+
+        .tool-tag:hover {
+            background: #0284C7;
+            color: #FFFFFF;
+            transform: translateY(-2px);
+            box-shadow: rgba(2, 132, 199, 0.3) 0px 4px 12px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 48px 0;
+            color: #57534E;
+            font-size: 14px;
+            border-top: 1px solid #F5F5F4;
+            background: #FFFFFF;
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 48px 0;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .overview-content {
+                padding: 20px;
+                font-size: 15px;
+            }
+
+            .chart-container {
+                padding: 20px 16px;
+            }
+
+            .chart-wrapper {
+                height: 300px;
+            }
+
+            .stat-card {
+                padding: 20px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 16px;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #smallMultiples {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 12px;
+        }
+
+        @media (max-width: 1024px) {
+            #smallMultiples {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            #smallMultiples {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #smallMultiples {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .heatmap-wrapper {
+            overflow-x: auto;
+        }
+
+        .heatmap-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            min-width: 700px;
+        }
+
+        .heatmap-table th {
+            padding: 10px 8px;
+            text-align: center;
+            font-weight: 600;
+            color: #57534E;
+            font-size: 12px;
+            border-bottom: 2px solid #F5F5F4;
+            position: sticky;
+            top: 0;
+            background: #FFFFFF;
+        }
+
+        .heatmap-table th:first-child {
+            text-align: left;
+            padding-left: 12px;
+            min-width: 100px;
+        }
+
+        .heatmap-table td {
+            padding: 8px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 500;
+            border-bottom: 1px solid #F5F5F4;
+            transition: transform 0.15s ease;
+        }
+
+        .heatmap-table td:first-child {
+            text-align: left;
+            padding-left: 12px;
+            font-weight: 600;
+            color: #1C1917;
+            background: #FFFFFF !important;
+        }
+
+        .heatmap-table tr:hover td {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Korea Apartment<br>Price Analysis</h1>
+            <p class="subtitle">Data Analysis Project Based on Public Open Data</p>
+        </div>
+    </section>
+
+    <section id="overview" class="fade-in">
+        <div class="container">
+            <h2 class="section-title">Project Overview</h2>
+            <div class="overview-content">
+                This project analyzes nationwide new apartment sale price data from <strong style="color: #0284C7">2013 to 2019</strong>, sourced from Korea's Public Data Portal.
+                A total of <strong style="color: #0284C7">4,692 records</strong> (two datasets merged via <code>pd.melt()</code> + <code>pd.concat()</code>) were collected to examine price trends per pyeong across <strong style="color: #0284C7">17 metropolitan regions</strong>.
+                Key insights were derived through data preprocessing and exploratory analysis using Python and Pandas.
+            </div>
+        </div>
+    </section>
+
+    <section id="pipeline" class="fade-in">
+        <div class="container">
+            <h2 class="section-title">Data Pipeline</h2>
+
+            <div class="pipeline-grid">
+                <div class="pipeline-step">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Data Collection</div>
+                    <div class="step-desc">
+                        Two CSV datasets sourced from Korea's Public Data Portal:
+                        <ul>
+                            <li><strong>Dataset A</strong> — 2013.9–2015.8 (17 rows &times; 22 cols, wide format)</li>
+                            <li><strong>Dataset B</strong> — 2015.10–2019.12 (4,335 rows &times; 5 cols, long format)</li>
+                        </ul>
+                        <a href="./apt-price-2013-2015.csv" download class="download-link">&#11015; Dataset A (.csv)</a>
+                        <a href="./apt-price-2015-2019.csv" download class="download-link">&#11015; Dataset B (.csv)</a>
+                    </div>
+                </div>
+
+                <div class="pipeline-step">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Data Cleaning</div>
+                    <div class="step-desc">
+                        <ul>
+                            <li>Resolved EUC-KR / CP949 character encoding</li>
+                            <li>Price column stored as <span class="badge badge-object">object</span> &rarr; converted to <span class="badge badge-float">float64</span> via <code>pd.to_numeric()</code></li>
+                            <li>Identified 277 missing values (NaN) in the price field</li>
+                        </ul>
+                        <div class="code-snippet"><span class="code-comment"># encoding fix + type conversion</span>
+df = pd.<span class="code-func">read_csv</span>(<span class="code-string">"data.csv"</span>, encoding=<span class="code-string">"cp949"</span>)
+df[<span class="code-string">"price"</span>] = pd.<span class="code-func">to_numeric</span>(df[<span class="code-string">"price_raw"</span>], errors=<span class="code-string">"coerce"</span>)</div>
+                    </div>
+                </div>
+
+                <div class="pipeline-step">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Feature Engineering</div>
+                    <div class="step-desc">
+                        <ul>
+                            <li>Price per &#13217; &rarr; price per pyeong (&times; 3.3)</li>
+                            <li>Parsed apartment size categories from Korean text strings</li>
+                            <li>Dropped redundant source columns</li>
+                        </ul>
+                        <div class="code-snippet"><span class="code-comment"># unit conversion + text parsing</span>
+df[<span class="code-string">"price_pyeong"</span>] = df[<span class="code-string">"price"</span>] * <span class="code-keyword">3.3</span>
+df[<span class="code-string">"area"</span>] = df[<span class="code-string">"size_class"</span>].str.<span class="code-func">replace</span>(<span class="code-string">"..."</span>, <span class="code-string">""</span>)</div>
+                    </div>
+                </div>
+
+                <div class="pipeline-step">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Data Integration</div>
+                    <div class="step-desc">
+                        <ul>
+                            <li>Wide-format Dataset A &rarr; long format via <code>pd.melt()</code></li>
+                            <li>Parsed year/month from Korean date strings</li>
+                            <li>Merged both datasets with <code>pd.concat()</code> (4,692 rows)</li>
+                        </ul>
+                        <div class="code-snippet"><span class="code-comment"># reshape + merge</span>
+df_melt = df_first.<span class="code-func">melt</span>(id_vars=[<span class="code-string">"region"</span>])
+df = pd.<span class="code-func">concat</span>([df_first_prep, df_last_prep])</div>
+                    </div>
+                </div>
+
+                <div class="pipeline-step">
+                    <div class="step-number">5</div>
+                    <div class="step-title">Analysis</div>
+                    <div class="step-desc">
+                        <ul>
+                            <li><code>groupby("region")</code> &rarr; regional averages</li>
+                            <li><code>groupby("year")</code> &rarr; yearly trends</li>
+                            <li><code>groupby("area")</code> &rarr; size category comparison</li>
+                        </ul>
+                        <div class="code-snippet"><span class="code-comment"># aggregation</span>
+df.<span class="code-func">groupby</span>([<span class="code-string">"region"</span>])[<span class="code-string">"price_pyeong"</span>].<span class="code-func">mean</span>()</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="schema-grid">
+                <div class="data-table-wrapper">
+                    <div class="data-table-header">
+                        <div class="data-table-title">Raw Data Schema (Before)</div>
+                        <div class="data-table-subtitle">5 columns &middot; 4,335 rows &middot; Dataset B</div>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Column</th><th>Type</th><th>Non-Null</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Region</td><td><span class="badge badge-object">object</span></td><td>4,335</td></tr>
+                            <tr><td>Size Class</td><td><span class="badge badge-object">object</span></td><td>4,335</td></tr>
+                            <tr><td>Year</td><td><span class="badge badge-int">int64</span></td><td>4,335</td></tr>
+                            <tr><td>Month</td><td><span class="badge badge-int">int64</span></td><td>4,335</td></tr>
+                            <tr><td>Price (&#13217;)</td><td><span class="badge badge-object">object</span></td><td>4,058</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="data-table-wrapper">
+                    <div class="data-table-header">
+                        <div class="data-table-title">Processed Schema (After)</div>
+                        <div class="data-table-subtitle">6 columns &middot; 4,335 rows &middot; cleaned &amp; engineered</div>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Column</th><th>Type</th><th>Non-Null</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Region</td><td><span class="badge badge-object">object</span></td><td>4,335</td></tr>
+                            <tr><td>Year</td><td><span class="badge badge-int">int64</span></td><td>4,335</td></tr>
+                            <tr><td>Month</td><td><span class="badge badge-int">int64</span></td><td>4,335</td></tr>
+                            <tr><td>Price</td><td><span class="badge badge-float">float64</span></td><td>3,957</td></tr>
+                            <tr><td>Price / Pyeong</td><td><span class="badge badge-float">float64</span></td><td>3,957</td></tr>
+                            <tr><td>Area Type</td><td><span class="badge badge-object">object</span></td><td>4,335</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="stats" class="fade-in">
+        <div class="container">
+            <h2 class="section-title">Key Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">4,692</div>
+                    <div class="stat-label">Total Records</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">17</div>
+                    <div class="stat-label">Regions Analyzed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">7 yrs</div>
+                    <div class="stat-label">Analysis Period (2013–2019)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">30.5%</div>
+                    <div class="stat-label">National Avg. Price Increase</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="charts" class="fade-in">
+        <div class="container">
+            <h2 class="section-title">Data Visualization</h2>
+
+            <div class="chart-container">
+                <h3 class="chart-title">Average Price per Pyeong by Region</h3>
+                <div class="chart-wrapper">
+                    <canvas id="regionChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3 class="chart-title">Yearly Trend: National vs Seoul (2013–2019)</h3>
+                <div class="chart-wrapper">
+                    <canvas id="trendChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3 class="chart-title">Average Price by Apartment Size</h3>
+                <div class="chart-wrapper">
+                    <canvas id="sizeChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3 class="chart-title">Yearly Price Distribution</h3>
+                <div class="chart-wrapper">
+                    <canvas id="distributionChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3 class="chart-title">Price Distribution (KRW per Pyeong)</h3>
+                <p style="font-size: 14px; color: #57534E; margin-top: -16px; margin-bottom: 16px;">Distribution of 3,957 price records across 17 regions (2015–2019). Right-skewed with outlier at 42,002.</p>
+                <div class="chart-wrapper">
+                    <canvas id="histogramChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3 class="chart-title">Price Trend by Apartment Size (2015–2019)</h3>
+                <div class="chart-wrapper">
+                    <canvas id="areaTypeChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3 class="chart-title">Regional Price Heatmap (2013–2019)</h3>
+                <p style="font-size: 14px; color: #57534E; margin-top: -16px; margin-bottom: 16px;">Average price per pyeong by region and year. Darker blue = higher price. Combined from two datasets via pd.melt() + pd.concat().</p>
+                <div class="heatmap-wrapper">
+                    <table class="heatmap-table" id="heatmapTable"></table>
+                </div>
+            </div>
+
+            <div class="chart-container" style="display: none;">
+                <h3 class="chart-title">Price Trends by Region (2015–2019)</h3>
+                <div id="smallMultiples"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="insights" class="fade-in">
+        <div class="container">
+            <h2 class="section-title">Key Insights</h2>
+            <div class="insights-grid">
+                <div class="insight-item">
+                    Seoul's average price per pyeong is approximately <strong>twice the national average</strong>, reflecting a clear concentration in the capital region.
+                </div>
+                <div class="insight-item">
+                    Combining both datasets reveals the national average rose by <strong>51.2% from 2013 to 2019</strong> (8,059 to 12,188 KRW/pyeong), accelerating sharply after 2017.
+                </div>
+                <div class="insight-item">
+                    Seoul recorded a <strong>32.5% increase</strong> over the same period, outpacing the national average growth rate.
+                </div>
+                <div class="insight-item">
+                    Larger apartments (102㎡+) command a <strong>12% premium</strong> over the overall average, while mid-size units (60–85㎡) are the most affordable.
+                </div>
+                <div class="insight-item">
+                    Price distribution <strong>widened significantly in 2019</strong> — the max reached 42,002 KRW/pyeong while the minimum barely moved, indicating growing inequality.
+                </div>
+                <div class="insight-item">
+                    The highest recorded price was <strong>42,002 KRW/pyeong</strong> in Seoul for 85–102㎡ apartments (Jun–Dec 2019), nearly <strong>4× the national median</strong> of 10,686.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tools-section fade-in">
+        <div class="container">
+            <h2 class="section-title">Tools & Technologies</h2>
+            <div class="tools-list">
+                <span class="tool-tag">Python</span>
+                <span class="tool-tag">Pandas</span>
+                <span class="tool-tag">Jupyter Notebook</span>
+                <span class="tool-tag">Matplotlib</span>
+                <span class="tool-tag">Seaborn</span>
+                <span class="tool-tag">Korea Public Data Portal</span>
+                <span class="tool-tag">Chart.js</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            &copy; 2026 Korea Apartment Price Analysis Project. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        Chart.defaults.color = '#57534E';
+        Chart.defaults.borderColor = '#F5F5F4';
+        Chart.defaults.font.family = "-apple-system, 'system-ui', 'Segoe UI', Roboto, sans-serif, 'Noto Sans KR'";
+
+        const regionCtx = document.getElementById('regionChart').getContext('2d');
+        const regionChart = new Chart(regionCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Seoul', 'Gyeonggi', 'Busan', 'Daegu', 'Incheon', 'Jeju', 'Ulsan', 'Gwangju', 'Sejong', 'Daejeon', 'Gyeongnam', 'Gyeongbuk', 'Chungnam', 'Gangwon', 'Jeonbuk', 'Jeonnam', 'Chungbuk'],
+                datasets: [{
+                    label: 'Avg. Price (KRW/Pyeong)',
+                    data: [22610, 12560, 11936, 11771, 11257, 10785, 10493, 9904, 9805, 9786, 8659, 8079, 7815, 7478, 7293, 7284, 7219],
+                    backgroundColor: (context) => {
+                        const gradient = context.chart.ctx.createLinearGradient(0, 0, 0, 400);
+                        gradient.addColorStop(0, 'rgba(2, 132, 199, 0.9)');
+                        gradient.addColorStop(1, 'rgba(2, 132, 199, 0.6)');
+                        return gradient;
+                    },
+                    borderColor: '#0284C7',
+                    borderWidth: 0,
+                    borderRadius: 8,
+                    hoverBackgroundColor: '#0866FF',
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: '#FFFFFF',
+                        titleColor: '#1C1917',
+                        bodyColor: '#444340',
+                        borderColor: '#F5F5F4',
+                        borderWidth: 1,
+                        padding: 12,
+                        displayColors: false,
+                        callbacks: {
+                            label: function(context) {
+                                return context.parsed.y.toLocaleString() + ' KRW/Pyeong';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#F5F5F4'
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return (value / 1000).toFixed(0) + 'k';
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        const trendCtx = document.getElementById('trendChart').getContext('2d');
+        const trendChart = new Chart(trendCtx, {
+            type: 'line',
+            data: {
+                labels: ['2013', '2014', '2015', '2016', '2017', '2018', '2019'],
+                datasets: [
+                    {
+                        label: 'National Avg.',
+                        data: [8059, 8362, 8893, 9293, 9901, 10676, 11603],
+                        borderColor: '#0284C7',
+                        backgroundColor: 'rgba(2, 132, 199, 0.1)',
+                        borderWidth: 3,
+                        tension: 0.4,
+                        fill: true,
+                        pointBackgroundColor: '#0284C7',
+                        pointBorderColor: '#FFFFFF',
+                        pointBorderWidth: 2,
+                        pointRadius: 6,
+                        pointHoverRadius: 8
+                    },
+                    {
+                        label: 'Seoul Avg.',
+                        data: [18189, 18997, 19725, 20663, 21376, 22889, 26131],
+                        borderColor: '#A855F7',
+                        backgroundColor: 'rgba(168, 85, 247, 0.1)',
+                        borderWidth: 3,
+                        tension: 0.4,
+                        fill: true,
+                        pointBackgroundColor: '#A855F7',
+                        pointBorderColor: '#FFFFFF',
+                        pointBorderWidth: 2,
+                        pointRadius: 6,
+                        pointHoverRadius: 8
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index',
+                    intersect: false
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 20,
+                            font: {
+                                size: 14,
+                                weight: '500'
+                            }
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: '#FFFFFF',
+                        titleColor: '#1C1917',
+                        bodyColor: '#444340',
+                        borderColor: '#F5F5F4',
+                        borderWidth: 1,
+                        padding: 12,
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.parsed.y.toLocaleString() + ' KRW/Pyeong';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#F5F5F4'
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return (value / 1000).toFixed(0) + 'k';
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: '#F5F5F4'
+                        }
+                    }
+                }
+            }
+        });
+
+        const sizeCtx = document.getElementById('sizeChart').getContext('2d');
+        const sizeChart = new Chart(sizeCtx, {
+            type: 'bar',
+            data: {
+                labels: ['102㎡+', '85㎡–102㎡', 'Under 60㎡', 'All Sizes', '60㎡–85㎡'],
+                datasets: [{
+                    label: 'Avg. Price (KRW/Pyeong)',
+                    data: [11518, 11098, 10375, 10276, 10271],
+                    backgroundColor: (context) => {
+                        const gradient = context.chart.ctx.createLinearGradient(0, 0, 400, 0);
+                        gradient.addColorStop(0, 'rgba(2, 132, 199, 0.9)');
+                        gradient.addColorStop(1, 'rgba(2, 132, 199, 0.6)');
+                        return gradient;
+                    },
+                    borderColor: '#0284C7',
+                    borderWidth: 0,
+                    borderRadius: 8,
+                    hoverBackgroundColor: '#0866FF',
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: '#FFFFFF',
+                        titleColor: '#1C1917',
+                        bodyColor: '#444340',
+                        borderColor: '#F5F5F4',
+                        borderWidth: 1,
+                        padding: 12,
+                        displayColors: false,
+                        callbacks: {
+                            label: function(context) {
+                                return context.parsed.x.toLocaleString() + ' KRW/Pyeong';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#F5F5F4'
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return (value / 1000).toFixed(0) + 'k';
+                            }
+                        }
+                    },
+                    y: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        const distributionCtx = document.getElementById('distributionChart').getContext('2d');
+        const distributionChart = new Chart(distributionCtx, {
+            type: 'line',
+            data: {
+                labels: ['2015', '2016', '2017', '2018', '2019'],
+                datasets: [
+                    {
+                        label: 'Max',
+                        data: [23404, 26717, 26027, 26723, 42002],
+                        borderColor: '#D6D3D1',
+                        borderWidth: 2,
+                        borderDash: [5, 5],
+                        pointRadius: 0,
+                        fill: false,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Q3',
+                        data: [9984, 10390, 11405, 12203, 13419],
+                        borderColor: 'rgba(2, 132, 199, 0.4)',
+                        backgroundColor: 'rgba(2, 132, 199, 0.15)',
+                        borderWidth: 1,
+                        pointRadius: 0,
+                        fill: '+1',
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Median',
+                        data: [8303, 8818, 9402, 9742, 11204],
+                        borderColor: '#0284C7',
+                        backgroundColor: '#0284C7',
+                        borderWidth: 4,
+                        pointRadius: 6,
+                        pointBackgroundColor: '#0284C7',
+                        pointBorderColor: '#FFFFFF',
+                        pointBorderWidth: 2,
+                        fill: false,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Q1',
+                        data: [7342, 7531, 7804, 8332, 8697],
+                        borderColor: 'rgba(2, 132, 199, 0.4)',
+                        backgroundColor: 'rgba(2, 132, 199, 0.15)',
+                        borderWidth: 1,
+                        pointRadius: 0,
+                        fill: '+1',
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Min',
+                        data: [6164, 6270, 6521, 6851, 7009],
+                        borderColor: '#D6D3D1',
+                        borderWidth: 2,
+                        borderDash: [5, 5],
+                        pointRadius: 0,
+                        fill: false,
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index',
+                    intersect: false
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 20,
+                            font: {
+                                size: 14,
+                                weight: '500'
+                            },
+                            filter: function(item) {
+                                return ['Max', 'Q3', 'Median', 'Q1', 'Min'].includes(item.text);
+                            }
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: '#FFFFFF',
+                        titleColor: '#1C1917',
+                        bodyColor: '#444340',
+                        borderColor: '#F5F5F4',
+                        borderWidth: 1,
+                        padding: 12,
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.parsed.y.toLocaleString() + ' KRW/Pyeong';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        grid: {
+                            color: '#F5F5F4'
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return (value / 1000).toFixed(0) + 'k';
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: '#F5F5F4'
+                        }
+                    }
+                }
+            }
+        });
+
+        const regionData = {
+            'Seoul': [19725, 20663, 21375, 22889, 26131],
+            'Gyeonggi': [10377, 11220, 11849, 13185, 14468],
+            'Busan': [10306, 10429, 11577, 12997, 13116],
+            'Daegu': [9232, 10310, 11455, 12075, 13852],
+            'Incheon': [10484, 10532, 10736, 11273, 12634],
+            'Jeju': [7405, 9129, 10830, 11890, 12137],
+            'Ulsan': [10052, 10208, 11345, 10241, 10022],
+            'Gwangju': [8052, 8898, 9463, 9855, 11822],
+            'Sejong': [8750, 8860, 9135, 10354, 11078],
+            'Daejeon': [8098, 8501, 9044, 10180, 11777],
+            'Gyeongnam': [7585, 7847, 8119, 9019, 9870],
+            'Gyeongbuk': [7170, 7360, 7794, 8505, 8856],
+            'Chungnam': [7114, 7330, 7456, 8012, 8606],
+            'Gangwon': [7159, 7011, 7126, 7680, 8141],
+            'Jeonbuk': [6703, 6417, 7057, 7625, 8196],
+            'Jeonnam': [6317, 6488, 7187, 7789, 7902],
+            'Chungbuk': [6645, 6770, 6762, 7874, 7574]
+        };
+
+        const smallMultiplesContainer = document.getElementById('smallMultiples');
+
+        Object.entries(regionData).forEach(([region, data]) => {
+            const card = document.createElement('div');
+            card.style.cssText = 'background: #FFFFFF; border: 1px solid #F5F5F4; border-radius: 10px; padding: 10px; box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px;';
+
+            const title = document.createElement('div');
+            title.textContent = region;
+            title.style.cssText = 'font-size: 12px; font-weight: 700; color: #1C1917; margin-bottom: 4px;';
+
+            const valueLabels = document.createElement('div');
+            valueLabels.style.cssText = 'display: flex; justify-content: space-between; font-size: 10px; color: #A8A29E; margin-bottom: 4px;';
+            valueLabels.innerHTML = `<span>${data[0].toLocaleString()}</span><span>${data[4].toLocaleString()}</span>`;
+
+            const canvas = document.createElement('canvas');
+            canvas.height = 70;
+
+            card.appendChild(title);
+            card.appendChild(valueLabels);
+            card.appendChild(canvas);
+            smallMultiplesContainer.appendChild(card);
+
+            new Chart(canvas.getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: ['2015', '2016', '2017', '2018', '2019'],
+                    datasets: [{
+                        data: data,
+                        borderColor: '#0284C7',
+                        backgroundColor: 'rgba(2, 132, 199, 0.1)',
+                        borderWidth: 1.5,
+                        tension: 0.4,
+                        fill: true,
+                        pointRadius: 0,
+                        pointHoverRadius: 3,
+                        pointBackgroundColor: '#0284C7'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#FFFFFF',
+                            titleColor: '#1C1917',
+                            bodyColor: '#444340',
+                            borderColor: '#F5F5F4',
+                            borderWidth: 1,
+                            padding: 8,
+                            displayColors: false,
+                            callbacks: {
+                                title: function(context) {
+                                    return context[0].label;
+                                },
+                                label: function(context) {
+                                    return context.parsed.y.toLocaleString() + ' KRW/Pyeong';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            display: false,
+                            beginAtZero: false
+                        },
+                        x: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        });
+
+        const histogramCtx = document.getElementById('histogramChart').getContext('2d');
+        const histogramChart = new Chart(histogramCtx, {
+            type: 'bar',
+            data: {
+                labels: ['6k–9k', '9k–11k', '11k–13k', '13k–16k', '16k–18k', '18k–21k', '21k–23k', '23k–25k', '25k–28k', '28k–30k', '30k–32k', '32k–35k', '35k–37k', '37k–40k', '40k–42k'],
+                datasets: [{
+                    label: 'Count',
+                    data: [1322, 1364, 683, 249, 87, 27, 121, 46, 39, 12, 0, 0, 0, 0, 7],
+                    backgroundColor: (context) => {
+                        const gradient = context.chart.ctx.createLinearGradient(0, 0, 0, 400);
+                        gradient.addColorStop(0, 'rgba(2, 132, 199, 0.9)');
+                        gradient.addColorStop(1, 'rgba(2, 132, 199, 0.6)');
+                        return gradient;
+                    },
+                    borderColor: '#0284C7',
+                    borderWidth: 0,
+                    borderRadius: 8,
+                    hoverBackgroundColor: '#0866FF',
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: '#FFFFFF',
+                        titleColor: '#1C1917',
+                        bodyColor: '#444340',
+                        borderColor: '#F5F5F4',
+                        borderWidth: 1,
+                        padding: 12,
+                        displayColors: false,
+                        callbacks: {
+                            label: function(context) {
+                                return context.parsed.y.toLocaleString() + ' records';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#F5F5F4'
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return value.toLocaleString();
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        const areaTypeCtx = document.getElementById('areaTypeChart').getContext('2d');
+        const areaTypeChart = new Chart(areaTypeCtx, {
+            type: 'line',
+            data: {
+                labels: ['2015', '2016', '2017', '2018', '2019'],
+                datasets: [
+                    {
+                        label: 'All Sizes',
+                        data: [8893, 9293, 9901, 10676, 11603],
+                        borderColor: '#0284C7',
+                        backgroundColor: 'transparent',
+                        borderWidth: 3,
+                        tension: 0.4,
+                        fill: false,
+                        pointBackgroundColor: '#0284C7',
+                        pointBorderColor: '#FFFFFF',
+                        pointBorderWidth: 2,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    },
+                    {
+                        label: 'Under 60㎡',
+                        data: [8952, 9399, 10246, 10844, 11507],
+                        borderColor: '#16A34A',
+                        backgroundColor: 'transparent',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        fill: false,
+                        pointBackgroundColor: '#16A34A',
+                        pointBorderColor: '#FFFFFF',
+                        pointBorderWidth: 2,
+                        pointRadius: 4,
+                        pointHoverRadius: 6
+                    },
+                    {
+                        label: '60–85㎡',
+                        data: [8892, 9296, 9825, 10651, 11677],
+                        borderColor: '#A855F7',
+                        backgroundColor: 'transparent',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        fill: false,
+                        pointBackgroundColor: '#A855F7',
+                        pointBorderColor: '#FFFFFF',
+                        pointBorderWidth: 2,
+                        pointRadius: 4,
+                        pointHoverRadius: 6
+                    },
+                    {
+                        label: '85–102㎡',
+                        data: [9519, 10122, 10540, 11442, 12981],
+                        borderColor: '#EA580C',
+                        backgroundColor: 'transparent',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        fill: false,
+                        pointBackgroundColor: '#EA580C',
+                        pointBorderColor: '#FFFFFF',
+                        pointBorderWidth: 2,
+                        pointRadius: 4,
+                        pointHoverRadius: 6
+                    },
+                    {
+                        label: '102㎡+',
+                        data: [9837, 10389, 11334, 11446, 13332],
+                        borderColor: '#DC2626',
+                        backgroundColor: 'transparent',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        fill: false,
+                        pointBackgroundColor: '#DC2626',
+                        pointBorderColor: '#FFFFFF',
+                        pointBorderWidth: 2,
+                        pointRadius: 4,
+                        pointHoverRadius: 6
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index',
+                    intersect: false
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 20,
+                            font: {
+                                size: 14,
+                                weight: '500'
+                            }
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: '#FFFFFF',
+                        titleColor: '#1C1917',
+                        bodyColor: '#444340',
+                        borderColor: '#F5F5F4',
+                        borderWidth: 1,
+                        padding: 12,
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.parsed.y.toLocaleString() + ' KRW/Pyeong';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        grid: {
+                            color: '#F5F5F4'
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return (value / 1000).toFixed(0) + 'k';
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: '#F5F5F4'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Heatmap: Year x Region
+        const heatmapData = {
+            years: [2013, 2014, 2015, 2016, 2017, 2018, 2019],
+            regions: [
+                { name: 'Seoul', values: [18189, 18997, 19899, 21753, 21831, 23202, 28287] },
+                { name: 'Gyeonggi', values: [10855, 10509, 10877, 11685, 12305, 14258, 15666] },
+                { name: 'Daegu', values: [8080, 8286, 8842, 10282, 12207, 12139, 14082] },
+                { name: 'Busan', values: [8111, 9180, 10031, 10744, 11561, 12890, 13538] },
+                { name: 'Incheon', values: [10204, 10075, 10706, 11099, 11641, 11882, 13250] },
+                { name: 'Daejeon', values: [8321, 8240, 8157, 8911, 9957, 10234, 12619] },
+                { name: 'Gwangju', values: [6098, 7588, 7918, 9191, 9614, 9527, 12112] },
+                { name: 'Jeju', values: [7674, 7855, 7766, 9567, 12567, 11936, 11828] },
+                { name: 'Sejong', values: [7601, 8085, 8708, 8858, 9133, 10340, 11299] },
+                { name: 'Gyeongnam', values: [6473, 6729, 8184, 8497, 8787, 9328, 10698] },
+                { name: 'Ulsan', values: [8090, 8362, 9233, 9583, 10667, 10241, 10216] },
+                { name: 'Gyeongbuk', values: [6168, 6536, 7297, 7753, 8281, 8681, 9050] },
+                { name: 'Gangwon', values: [6230, 6332, 7021, 7163, 7274, 8219, 8934] },
+                { name: 'Chungnam', values: [6365, 6682, 7447, 7958, 8198, 8202, 8749] },
+                { name: 'Jeonbuk', values: [6282, 6362, 6931, 6907, 7399, 8175, 8532] },
+                { name: 'Jeonnam', values: [5678, 5719, 6532, 6937, 7373, 7930, 8219] },
+                { name: 'Chungbuk', values: [6589, 6620, 6791, 7133, 7473, 8149, 7971] }
+            ]
+        };
+
+        const allValues = heatmapData.regions.flatMap(r => r.values);
+        const minVal = Math.min(...allValues);
+        const maxVal = Math.max(...allValues);
+
+        function getHeatColor(value) {
+            const ratio = (value - minVal) / (maxVal - minVal);
+            const r = Math.round(255 - ratio * (255 - 2));
+            const g = Math.round(255 - ratio * (255 - 132));
+            const b = Math.round(255 - ratio * (255 - 199));
+            const textColor = ratio > 0.55 ? '#FFFFFF' : '#1C1917';
+            return { bg: `rgb(${r}, ${g}, ${b})`, text: textColor };
+        }
+
+        const heatmapTable = document.getElementById('heatmapTable');
+        let html = '<thead><tr><th>Region</th>';
+        heatmapData.years.forEach(y => { html += `<th>${y}</th>`; });
+        html += '<th>Change</th></tr></thead><tbody>';
+
+        heatmapData.regions.forEach(region => {
+            html += `<tr><td>${region.name}</td>`;
+            region.values.forEach(val => {
+                const color = getHeatColor(val);
+                html += `<td style="background:${color.bg};color:${color.text};border-radius:4px;">${(val/1000).toFixed(1)}k</td>`;
+            });
+            const change = ((region.values[6] - region.values[0]) / region.values[0] * 100).toFixed(0);
+            const changeColor = change > 60 ? '#DC2626' : change > 40 ? '#EA580C' : '#16A34A';
+            html += `<td style="font-weight:700;color:${changeColor};">+${change}%</td>`;
+            html += '</tr>';
+        });
+
+        html += '</tbody>';
+        heatmapTable.innerHTML = html;
+
+        const observerOptions = {
+            threshold: 0.01,
+            rootMargin: '0px 0px 0px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
