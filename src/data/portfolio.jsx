@@ -1,6 +1,6 @@
 export const personalInfo = {
   name: 'Daiyong Kim',
-  title: 'Senior Android Developer',
+  title: 'Senior Software Engineer',
   subtitle: '15+ Years of Mobile Excellence',
   email: 'daiyongg.kim@gmail.com',
   phone: '949-343-8946',
@@ -12,8 +12,8 @@ export const personalInfo = {
 
 export const heroContent = {
   greeting: "Hi, I'm Daiyong Kim",
-  headline: "Senior Android Developer",
-  description: "Senior Android Developer with over 15+ years of experience, having led mobile innovation at Samsung Electronics. Strong in designing complex systems and developing high-performance applications leveraging modern technologies.",
+  headline: "Senior Software Engineer",
+  description: "Senior Software Engineer with over 15+ years of experience, having led mobile innovation at Samsung Electronics. Strong in designing complex systems and developing high-performance applications leveraging modern technologies.",
   cta: {
     primary: "View My Work",
     secondary: "Download Resume"
@@ -21,7 +21,7 @@ export const heroContent = {
 }
 
 export const aboutContent = {
-  bio: "Senior Android Developer with over 15+ years of experience, having led mobile innovation at Samsung Electronics where I spearheaded the development of Bixby Vision Shopping service. My expertise spans complex system design, high-performance mobile applications, and architectural solutions that serve millions of users across global enterprises like HSBC and cutting-edge companies like GIT America.",
+  bio: "Senior Software Engineer with over 15+ years of experience, having led mobile innovation at Samsung Electronics where I spearheaded the development of Bixby Vision Shopping service. My expertise spans complex system design, high-performance mobile applications, and architectural solutions that serve millions of users across global enterprises like HSBC and cutting-edge companies like GIT America.",
   highlights: [
     "15+ years of professional Android development experience",
     "Developed Bixby Vision Shopping service integrated into Samsung Camera app",
@@ -60,7 +60,7 @@ export const experienceData = [
   },
   {
     id: 2,
-    title: "Sr. Android Developer",
+    title: "Sr. Software Engineer",
     company: "HSBC",
     location: "Vancouver, BC, Canada",
     duration: "Feb. 2022 - May 2023",

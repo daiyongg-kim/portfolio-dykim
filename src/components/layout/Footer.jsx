@@ -31,7 +31,7 @@ const Footer = () => {
               Daiyong Kim
             </div>
             <p className="text-gray-400 mb-4">
-              Senior Android Developer with 15+ years of experience at Samsung Electronics, HSBC, and GIT America.
+              Senior Software Engineer with 15+ years of experience at Samsung Electronics, HSBC, and GIT America.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social) => {
