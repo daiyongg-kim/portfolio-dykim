@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react'
-import { Menu, X, Download } from 'lucide-react'
+import { Menu, X, Download, FileText } from 'lucide-react'
 import Button from '../ui/Button'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+
+  const handlePortfolioOpen = () => {
+    window.open('/portfolio.html', '_blank')
+  }
 
   const handleResumeDownload = () => {
     const resumePath = '/Daiyong_Kim_s_Resume_for_Android_Engineer.pdf'
@@ -59,8 +63,17 @@ const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
+              size="sm"
+              className="flex items-center gap-2"
+              onClick={handlePortfolioOpen}
+            >
+              <FileText size={16} />
+              Portfolio
+            </Button>
+            <Button
+              variant="outline"
               size="sm"
               className="flex items-center gap-2"
               onClick={handleResumeDownload}
@@ -107,8 +120,20 @@ const Header = () => {
                 </a>
               ))}
               <div className="pt-4 border-t border-gray-200 flex flex-col space-y-3">
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="flex items-center justify-center gap-2"
+                  onClick={() => {
+                    handlePortfolioOpen()
+                    setIsMenuOpen(false)
+                  }}
+                >
+                  <FileText size={16} />
+                  Portfolio
+                </Button>
+                <Button
+                  variant="outline"
                   size="sm"
                   className="flex items-center justify-center gap-2"
                   onClick={handleResumeDownload}
