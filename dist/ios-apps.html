@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iOS Apps · SoSo Family | Mobile Engineering Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, "system-ui", "Segoe UI", Roboto, sans-serif, "Noto Sans KR";
+            background: #FFFFFF;
+            color: #1C1917;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+        html { scroll-behavior: smooth; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+        section { padding: 72px 0; }
+        section:nth-of-type(even) { background: #FAFAF9; }
+        .accent { color: #0284C7; }
+
+        .topnav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: saturate(180%) blur(8px);
+            border-bottom: 1px solid #F5F5F4;
+        }
+        .topnav .container {
+            display: flex; align-items: center; justify-content: space-between;
+            padding-top: 16px; padding-bottom: 16px;
+        }
+        .topnav .brand { font-weight: 700; color: #1C1917; }
+        .topnav .links { display: flex; gap: 10px; }
+        .nav-link {
+            display: inline-flex; align-items: center; gap: 6px;
+            color: #0284C7; text-decoration: none; font-size: 14px; font-weight: 500;
+            padding: 6px 14px; border-radius: 6px;
+            border: 1px solid rgba(2, 132, 199, 0.2); background: rgba(2, 132, 199, 0.1);
+            transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .nav-link:hover { background: #0284C7; color: #FFFFFF; }
+
+        .hero {
+            min-height: 56vh;
+            display: flex; align-items: center; justify-content: center; text-align: center;
+            background: #FFFFFF; padding-top: 80px;
+        }
+        .hero .eyebrow {
+            display: inline-block; font-size: 14px; font-weight: 600;
+            letter-spacing: 0.08em; text-transform: uppercase; color: #0284C7; margin-bottom: 16px;
+        }
+        .hero h1 {
+            font-size: clamp(40px, 8vw, 58px); font-weight: 700;
+            letter-spacing: -0.02em; margin-bottom: 20px; color: #1C1917; line-height: 1.15;
+        }
+        .hero .subtitle {
+            font-size: clamp(17px, 3vw, 21px); color: #57534E; font-weight: 400;
+            max-width: 680px; margin: 0 auto;
+        }
+
+        .app-block { display: grid; gap: 28px; }
+        .app-header { display: flex; align-items: flex-start; gap: 20px; flex-wrap: wrap; }
+        .app-icon {
+            width: 88px; height: 88px; border-radius: 20px; flex-shrink: 0;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 14px; border: 1px solid #F5F5F4;
+        }
+        .app-info { flex: 1; min-width: 240px; }
+        .app-name { font-size: clamp(24px, 4vw, 30px); font-weight: 700; color: #1C1917; margin-bottom: 6px; }
+        .app-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+        .badge {
+            display: inline-block; padding: 3px 10px; border-radius: 6px;
+            font-size: 12px; font-weight: 600;
+            background: rgba(2, 132, 199, 0.1); color: #0284C7; border: 1px solid rgba(2, 132, 199, 0.2);
+        }
+        .badge.gray { background: #F5F5F4; color: #57534E; border-color: #E7E5E4; }
+        .app-desc { font-size: 16px; color: #444340; line-height: 1.7; margin-bottom: 16px; max-width: 640px; }
+        .store-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: #0284C7; color: #FFFFFF; text-decoration: none;
+            padding: 10px 20px; border-radius: 10px; font-size: 14px; font-weight: 600;
+            transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .store-btn:hover { background: #0369A1; transform: translateY(-2px); box-shadow: rgba(2,132,199,0.3) 0px 6px 16px; }
+        .store-btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+        .shot-rail {
+            display: flex; gap: 16px; overflow-x: auto; padding: 8px 4px 20px;
+            scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+        }
+        .shot-rail::-webkit-scrollbar { height: 8px; }
+        .shot-rail::-webkit-scrollbar-thumb { background: #E7E5E4; border-radius: 4px; }
+        .shot {
+            flex: 0 0 auto; height: 440px; width: auto; border-radius: 22px;
+            border: 1px solid #F5F5F4; box-shadow: rgba(0, 0, 0, 0.10) 0px 6px 20px;
+            scroll-snap-align: start; background: #FAFAF9;
+        }
+
+        footer {
+            text-align: center; padding: 48px 0; color: #57534E; font-size: 14px;
+            border-top: 1px solid #F5F5F4; background: #FFFFFF;
+        }
+        footer a { color: #0284C7; text-decoration: none; font-weight: 500; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            section { padding: 48px 0; }
+            .container { padding: 0 20px; }
+            .shot { height: 360px; }
+            .topnav .links .nav-link.secondary { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="topnav">
+        <div class="container">
+            <span class="brand">DYKIM</span>
+            <div class="links">
+                <a class="nav-link secondary" href="/mobile-portfolio.html">Case Study</a>
+                <a class="nav-link" href="/">&larr; Portfolio</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <span class="eyebrow">Indie iOS Development</span>
+            <h1>iOS Apps</h1>
+            <p class="subtitle">Apps I design, build, and ship to the App Store as
+                <strong>SoSo Family</strong> &mdash; native, built with SwiftUI.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="container app-block">
+            <div class="app-header">
+                <img class="app-icon" src="/screenshots/ios/voicenote/icon.png" alt="VoiceNote+ app icon" width="88" height="88">
+                <div class="app-info">
+                    <div class="app-name">VoiceNote+</div>
+                    <div class="app-badges"><span class="badge">Utilities</span><span class="badge gray">iOS 17+</span><span class="badge gray">SwiftUI</span></div>
+                    <p class="app-desc">Convert your voice to text instantly with AI-powered, on-device transcription in 13 languages. Privacy-focused, fast note taking.</p>
+                    <a class="store-btn" href="https://apps.apple.com/app/id6757351644" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24"><path d="M16.36 12.94c-.02-2.05 1.68-3.04 1.76-3.09-0.96-1.4-2.45-1.59-2.98-1.61-1.27-.13-2.48.75-3.12.75-.64 0-1.64-.73-2.7-.71-1.39.02-2.67.81-3.38 2.05-1.44 2.5-.37 6.2 1.04 8.23.69.99 1.51 2.1 2.58 2.06 1.04-.04 1.43-.67 2.69-.67 1.25 0 1.61.67 2.71.65 1.12-.02 1.83-1.01 2.51-2 .79-1.15 1.12-2.26 1.13-2.32-.02-.01-2.17-.83-2.19-3.29zM14.3 6.9c.56-.69.94-1.63.84-2.59-.81.03-1.8.54-2.39 1.22-.52.6-.98 1.57-.86 2.49.91.07 1.84-.46 2.41-1.12z"/></svg>
+                        View on App Store
+                    </a>
+                </div>
+            </div>
+            <div class="shot-rail">
+                <img class="shot" loading="lazy" src="/screenshots/ios/voicenote/1.png" alt="VoiceNote+ screenshot 1">
+                <img class="shot" loading="lazy" src="/screenshots/ios/voicenote/2.png" alt="VoiceNote+ screenshot 2">
+                <img class="shot" loading="lazy" src="/screenshots/ios/voicenote/3.png" alt="VoiceNote+ screenshot 3">
+                <img class="shot" loading="lazy" src="/screenshots/ios/voicenote/4.png" alt="VoiceNote+ screenshot 4">
+                <img class="shot" loading="lazy" src="/screenshots/ios/voicenote/5.png" alt="VoiceNote+ screenshot 5">
+                <img class="shot" loading="lazy" src="/screenshots/ios/voicenote/6.png" alt="VoiceNote+ screenshot 6">
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container app-block">
+            <div class="app-header">
+                <img class="app-icon" src="/screenshots/ios/fitnesslog/icon.png" alt="FitnessLog app icon" width="88" height="88">
+                <div class="app-info">
+                    <div class="app-name">FitnessLog</div>
+                    <div class="app-badges"><span class="badge">Health &amp; Fitness</span><span class="badge gray">iOS 15+</span><span class="badge gray">SwiftUI</span></div>
+                    <p class="app-desc">Track your workouts and monitor fitness progress with custom routines, exercise logging, and progress charts.</p>
+                    <a class="store-btn" href="https://apps.apple.com/us/app/fitnesslog-workout-tracker/id6757098098" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24"><path d="M16.36 12.94c-.02-2.05 1.68-3.04 1.76-3.09-0.96-1.4-2.45-1.59-2.98-1.61-1.27-.13-2.48.75-3.12.75-.64 0-1.64-.73-2.7-.71-1.39.02-2.67.81-3.38 2.05-1.44 2.5-.37 6.2 1.04 8.23.69.99 1.51 2.1 2.58 2.06 1.04-.04 1.43-.67 2.69-.67 1.25 0 1.61.67 2.71.65 1.12-.02 1.83-1.01 2.51-2 .79-1.15 1.12-2.26 1.13-2.32-.02-.01-2.17-.83-2.19-3.29zM14.3 6.9c.56-.69.94-1.63.84-2.59-.81.03-1.8.54-2.39 1.22-.52.6-.98 1.57-.86 2.49.91.07 1.84-.46 2.41-1.12z"/></svg>
+                        View on App Store
+                    </a>
+                </div>
+            </div>
+            <div class="shot-rail">
+                <img class="shot" loading="lazy" src="/screenshots/ios/fitnesslog/1.png" alt="FitnessLog screenshot 1">
+                <img class="shot" loading="lazy" src="/screenshots/ios/fitnesslog/2.png" alt="FitnessLog screenshot 2">
+                <img class="shot" loading="lazy" src="/screenshots/ios/fitnesslog/3.png" alt="FitnessLog screenshot 3">
+                <img class="shot" loading="lazy" src="/screenshots/ios/fitnesslog/4.png" alt="FitnessLog screenshot 4">
+                <img class="shot" loading="lazy" src="/screenshots/ios/fitnesslog/5.png" alt="FitnessLog screenshot 5">
+                <img class="shot" loading="lazy" src="/screenshots/ios/fitnesslog/6.png" alt="FitnessLog screenshot 6">
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container app-block">
+            <div class="app-header">
+                <img class="app-icon" src="/screenshots/ios/snaptip/icon.png" alt="SnapTip app icon" width="88" height="88">
+                <div class="app-info">
+                    <div class="app-name">SnapTip</div>
+                    <div class="app-badges"><span class="badge">Utilities</span><span class="badge gray">iOS 15+</span><span class="badge gray">VisionKit</span></div>
+                    <p class="app-desc">Scan a receipt, calculate the tip instantly, and split the bill. On-device receipt scanning with custom tip options.</p>
+                    <a class="store-btn" href="https://apps.apple.com/us/app/snaptip/id6757663321" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24"><path d="M16.36 12.94c-.02-2.05 1.68-3.04 1.76-3.09-0.96-1.4-2.45-1.59-2.98-1.61-1.27-.13-2.48.75-3.12.75-.64 0-1.64-.73-2.7-.71-1.39.02-2.67.81-3.38 2.05-1.44 2.5-.37 6.2 1.04 8.23.69.99 1.51 2.1 2.58 2.06 1.04-.04 1.43-.67 2.69-.67 1.25 0 1.61.67 2.71.65 1.12-.02 1.83-1.01 2.51-2 .79-1.15 1.12-2.26 1.13-2.32-.02-.01-2.17-.83-2.19-3.29zM14.3 6.9c.56-.69.94-1.63.84-2.59-.81.03-1.8.54-2.39 1.22-.52.6-.98 1.57-.86 2.49.91.07 1.84-.46 2.41-1.12z"/></svg>
+                        View on App Store
+                    </a>
+                </div>
+            </div>
+            <div class="shot-rail">
+                <img class="shot" loading="lazy" src="/screenshots/ios/snaptip/1.png" alt="SnapTip screenshot 1">
+                <img class="shot" loading="lazy" src="/screenshots/ios/snaptip/2.png" alt="SnapTip screenshot 2">
+                <img class="shot" loading="lazy" src="/screenshots/ios/snaptip/3.png" alt="SnapTip screenshot 3">
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container app-block">
+            <div class="app-header">
+                <img class="app-icon" src="/screenshots/ios/qrra/icon.png" alt="Qrra app icon" width="88" height="88">
+                <div class="app-info">
+                    <div class="app-name">Qrra</div>
+                    <div class="app-badges"><span class="badge">Utilities</span><span class="badge gray">iOS 17+</span><span class="badge gray">SwiftUI</span></div>
+                    <p class="app-desc">Scan and generate QR codes instantly, with quick sharing and a searchable history of your scans.</p>
+                    <a class="store-btn" href="https://apps.apple.com/app/qrra/id6757939932" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24"><path d="M16.36 12.94c-.02-2.05 1.68-3.04 1.76-3.09-0.96-1.4-2.45-1.59-2.98-1.61-1.27-.13-2.48.75-3.12.75-.64 0-1.64-.73-2.7-.71-1.39.02-2.67.81-3.38 2.05-1.44 2.5-.37 6.2 1.04 8.23.69.99 1.51 2.1 2.58 2.06 1.04-.04 1.43-.67 2.69-.67 1.25 0 1.61.67 2.71.65 1.12-.02 1.83-1.01 2.51-2 .79-1.15 1.12-2.26 1.13-2.32-.02-.01-2.17-.83-2.19-3.29zM14.3 6.9c.56-.69.94-1.63.84-2.59-.81.03-1.8.54-2.39 1.22-.52.6-.98 1.57-.86 2.49.91.07 1.84-.46 2.41-1.12z"/></svg>
+                        View on App Store
+                    </a>
+                </div>
+            </div>
+            <div class="shot-rail">
+                <img class="shot" loading="lazy" src="/screenshots/ios/qrra/1.png" alt="Qrra screenshot 1">
+                <img class="shot" loading="lazy" src="/screenshots/ios/qrra/2.png" alt="Qrra screenshot 2">
+                <img class="shot" loading="lazy" src="/screenshots/ios/qrra/3.png" alt="Qrra screenshot 3">
+                <img class="shot" loading="lazy" src="/screenshots/ios/qrra/4.png" alt="Qrra screenshot 4">
+                <img class="shot" loading="lazy" src="/screenshots/ios/qrra/5.png" alt="Qrra screenshot 5">
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container app-block">
+            <div class="app-header">
+                <img class="app-icon" src="/screenshots/ios/scanory/icon.png" alt="Scanory app icon" width="88" height="88">
+                <div class="app-info">
+                    <div class="app-name">Scanory</div>
+                    <div class="app-badges"><span class="badge">Productivity</span><span class="badge gray">iOS 26+</span><span class="badge gray">VisionKit</span></div>
+                    <p class="app-desc">Scan documents and save them as PDF instantly, with multi-page support and folder-based organization.</p>
+                    <a class="store-btn" href="https://apps.apple.com/app/scanory/id6759507936" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24"><path d="M16.36 12.94c-.02-2.05 1.68-3.04 1.76-3.09-0.96-1.4-2.45-1.59-2.98-1.61-1.27-.13-2.48.75-3.12.75-.64 0-1.64-.73-2.7-.71-1.39.02-2.67.81-3.38 2.05-1.44 2.5-.37 6.2 1.04 8.23.69.99 1.51 2.1 2.58 2.06 1.04-.04 1.43-.67 2.69-.67 1.25 0 1.61.67 2.71.65 1.12-.02 1.83-1.01 2.51-2 .79-1.15 1.12-2.26 1.13-2.32-.02-.01-2.17-.83-2.19-3.29zM14.3 6.9c.56-.69.94-1.63.84-2.59-.81.03-1.8.54-2.39 1.22-.52.6-.98 1.57-.86 2.49.91.07 1.84-.46 2.41-1.12z"/></svg>
+                        View on App Store
+                    </a>
+                </div>
+            </div>
+            <div class="shot-rail">
+                <img class="shot" loading="lazy" src="/screenshots/ios/scanory/1.png" alt="Scanory screenshot 1">
+                <img class="shot" loading="lazy" src="/screenshots/ios/scanory/2.png" alt="Scanory screenshot 2">
+                <img class="shot" loading="lazy" src="/screenshots/ios/scanory/3.png" alt="Scanory screenshot 3">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Daiyong Kim &middot; SoSo Family &middot; iOS Apps on the App Store</p>
+            <p style="margin-top:8px;"><a href="/">&larr; Back to Portfolio</a></p>
+        </div>
+    </footer>
+</body>
+</html>

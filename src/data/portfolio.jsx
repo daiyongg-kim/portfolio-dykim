@@ -288,8 +288,8 @@ export const projectsData = [
       downloads: "Global"
     },
     links: {
-      playStore: "Samsung Galaxy",
-      github: "Samsung Electronics"
+      playStore: "https://www.youtube.com/watch?v=-6Q6O0p7QwU",
+      github: "https://www.samsung.com/"
     },
     status: "Published"
   },
@@ -313,7 +313,7 @@ export const projectsData = [
     },
     links: {
       playStore: "https://apps.apple.com/app/id6757351644",
-      github: "https://sosofamily.ca"
+      github: "/ios-apps.html"
     },
     status: "Published"
   },
@@ -328,16 +328,16 @@ export const projectsData = [
       "Custom training routines",
       "Progress charts and history",
       "Clean, focused fitness UX",
-      "Published on the App Store (iOS 17+)"
+      "Published on the App Store (iOS 15+)"
     ],
     metrics: {
-      users: "iOS 17+",
+      users: "iOS 15+",
       rating: "Health & Fitness",
       downloads: "Free"
     },
     links: {
       playStore: "https://apps.apple.com/us/app/fitnesslog-workout-tracker/id6757098098",
-      github: "https://sosofamily.ca"
+      github: "/ios-apps.html"
     },
     status: "Published"
   },
@@ -361,7 +361,7 @@ export const projectsData = [
     },
     links: {
       playStore: "https://apps.apple.com/us/app/snaptip/id6757663321",
-      github: "https://sosofamily.ca"
+      github: "/ios-apps.html"
     },
     status: "Published"
   },
@@ -385,7 +385,7 @@ export const projectsData = [
     },
     links: {
       playStore: "https://apps.apple.com/app/qrra/id6757939932",
-      github: "https://sosofamily.ca"
+      github: "/ios-apps.html"
     },
     status: "Published"
   },
@@ -400,16 +400,16 @@ export const projectsData = [
       "Export to PDF",
       "Multi-page document support",
       "Folder-based organization",
-      "Published on the App Store (iOS 16+)"
+      "Published on the App Store (iOS 26+)"
     ],
     metrics: {
-      users: "iOS 16+",
+      users: "iOS 26+",
       rating: "Productivity",
       downloads: "Free"
     },
     links: {
       playStore: "https://apps.apple.com/app/scanory/id6759507936",
-      github: "https://sosofamily.ca"
+      github: "/ios-apps.html"
     },
     status: "Published"
   }

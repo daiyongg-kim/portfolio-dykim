@@ -221,25 +221,57 @@
         }
         .stat-label { font-size: 14px; color: #57534E; font-weight: 500; }
 
-        /* Screenshot placeholders */
-        .shots-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
+        /* Demo video */
+        .demo-link {
+            display: block;
+            position: relative;
+            max-width: 720px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #F5F5F4;
+            box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 16px;
+            transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .shot-placeholder {
-            aspect-ratio: 9 / 16;
-            border-radius: 20px;
-            border: 2px dashed #D6D3D1;
-            background: linear-gradient(135deg, #F5F5F4 0%, #FAFAF9 100%);
+        .demo-link:hover {
+            transform: translateY(-4px);
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 12px 28px;
+        }
+        .demo-link img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        .demo-play {
+            position: absolute;
+            inset: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            color: #A8A29E;
-            font-size: 13px;
-            font-weight: 500;
-            padding: 16px;
+            background: rgba(28, 25, 23, 0.18);
+            transition: background 150ms ease;
+        }
+        .demo-link:hover .demo-play { background: rgba(28, 25, 23, 0.32); }
+        .demo-play span {
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 16px;
+        }
+        .demo-play span::after {
+            content: "";
+            margin-left: 6px;
+            border-style: solid;
+            border-width: 14px 0 14px 24px;
+            border-color: transparent transparent transparent #0284C7;
+        }
+        .demo-caption {
+            margin-top: 14px;
+            font-size: 14px;
+            color: #57534E;
         }
 
         .tools-list {
@@ -286,7 +318,10 @@
     <nav class="topnav">
         <div class="container">
             <span class="brand">DYKIM</span>
-            <a class="back-link" href="/">&larr; Back to Portfolio</a>
+            <div style="display:flex; gap:10px;">
+                <a class="back-link" href="/ios-apps.html">iOS Apps</a>
+                <a class="back-link" href="/">&larr; Portfolio</a>
+            </div>
         </div>
     </nav>
 
@@ -391,14 +426,14 @@
 
     <section>
         <div class="container">
-            <h2 class="section-title">Screenshots</h2>
-            <p class="section-subtitle">Product screens coming soon.</p>
-            <div class="shots-grid">
-                <div class="shot-placeholder">Screenshot 1</div>
-                <div class="shot-placeholder">Screenshot 2</div>
-                <div class="shot-placeholder">Screenshot 3</div>
-                <div class="shot-placeholder">Screenshot 4</div>
-            </div>
+            <h2 class="section-title">Demo</h2>
+            <p class="section-subtitle">See Bixby Vision Shopping in action.</p>
+            <a class="demo-link" href="https://www.youtube.com/watch?v=4yUW-EIMVo4"
+               target="_blank" rel="noopener noreferrer" aria-label="Watch the Bixby Vision Shopping demo on YouTube">
+                <img src="/screenshots/bixby-vision-demo.jpg" alt="Bixby Vision Shopping demo video thumbnail" loading="lazy" width="1280" height="720">
+                <span class="demo-play"><span></span></span>
+            </a>
+            <p class="demo-caption">Watch on YouTube &rarr;</p>
         </div>
     </section>
 

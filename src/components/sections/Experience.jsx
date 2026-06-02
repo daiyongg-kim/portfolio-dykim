@@ -6,7 +6,7 @@ import { experienceData } from '../../data/portfolio'
 import { useTimelineItemAnimation, useTimelineLineAnimation } from '../../hooks/useScrollAnimation'
 
 // Individual timeline item component with scroll animations
-const TimelineItem = ({ job, index, totalItems, isLast, isHSBC }) => {
+const TimelineItem = ({ job, index, totalItems, isLast, isRight }) => {
   const {
     elementRef,
     dotScale,
@@ -21,7 +21,7 @@ const TimelineItem = ({ job, index, totalItems, isLast, isHSBC }) => {
 
   return (
     <div ref={elementRef} className={`relative flex items-center md:gap-8 flex-col md:flex-row ${
-      isHSBC ? 'md:flex-row-reverse' : 'md:flex-row'
+      isRight ? 'md:flex-row-reverse' : 'md:flex-row'
     }`}>
       {/* Timeline Dot with Animated Scale */}
       <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 z-20">
@@ -57,7 +57,7 @@ const TimelineItem = ({ job, index, totalItems, isLast, isHSBC }) => {
       {/* Content with Animation */}
       <div 
         className={`w-full md:w-5/12 ml-12 md:ml-0 transition-all duration-700 ease-out ${
-          isHSBC ? 'md:text-right' : ''
+          isRight ? 'md:text-right' : ''
         }`}
         style={{
           opacity: contentOpacity,
@@ -65,8 +65,8 @@ const TimelineItem = ({ job, index, totalItems, isLast, isHSBC }) => {
         }}
       >
         <div className={`bg-white rounded-xl p-6 shadow-lg border border-gray-100 transition-all duration-500 hover:shadow-xl hover:-translate-y-1 ${
-          isHSBC ? 'md:ml-8' : 'md:mr-8'
-        } ${isHSBC ? 'border-accent-purple shadow-accent-purple/10' : ''}`}>
+          isRight ? 'md:ml-8' : 'md:mr-8'
+        }`}>
           <div className="text-primary-600 font-medium text-sm mb-2 flex items-center gap-2">
             <Calendar size={14} />
             {job.duration}
@@ -300,7 +300,7 @@ const Experience = () => {
                     index={index}
                     totalItems={reversedExperience.length}
                     isLast={index === reversedExperience.length - 1}
-                    isHSBC={job.company === "HSBC"}
+                    isRight={index % 2 === 1}
                   />
                 ))}
               </div>
