@@ -7,11 +7,12 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false)
 
   const handlePortfolioOpen = () => {
-    window.open('/portfolio.html', '_blank')
+    // window.open('/portfolio.html', '_blank') // (비활성화) 데이터 엔지니어 - Korea Apartment Price Analysis
+    window.open('/mobile-portfolio.html', '_blank')
   }
 
   const handleResumeDownload = () => {
-    const resumePath = '/Data_Scientist.pdf'
+    const resumePath = '/Daiyong_Kim_s_Resume_for_Android_Engineer.pdf'
     window.open(resumePath, '_blank')
   }
 

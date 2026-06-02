@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { Code, Database, Wrench, Users, Star, TrendingUp } from 'lucide-react'
+import { Code, Database, Wrench, Users, Star, TrendingUp, Smartphone } from 'lucide-react'
 import Card from '../ui/Card'
 import Badge from '../ui/Badge'
 import { skillsData } from '../../data/portfolio'
@@ -173,6 +173,29 @@ const Skills = () => {
               ))}
             </div>
           </div>
+
+          {/* iOS / Apple Platform */}
+          {skillsData.appleStack?.length > 0 && (
+            <div className={`mt-16 transition-all duration-800 delay-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+              <h3 className="text-2xl font-bold text-center text-gray-900 mb-3">
+                iOS / Apple Platform
+              </h3>
+              <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+                Indie iOS apps published on the App Store under SoSo Family — built with SwiftUI.
+              </p>
+              <div className="flex flex-wrap justify-center gap-3">
+                {skillsData.appleStack.map((tool, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm text-gray-800 font-medium"
+                  >
+                    <Smartphone size={16} className="text-primary-600" />
+                    {tool}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Skills Summary */}
           <div className={`mt-16 transition-all duration-800 delay-800 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>

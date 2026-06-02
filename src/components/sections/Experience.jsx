@@ -235,17 +235,19 @@ const Experience = () => {
                     </div>
 
                     {/* Key Achievements */}
-                    <div className="mb-6">
-                      <h4 className="text-lg font-semibold text-gray-900 mb-4">Key Achievements</h4>
-                      <ul className="space-y-3">
-                        {reversedExperience[selectedJob].achievements.map((achievement, index) => (
-                          <li key={index} className="flex items-start gap-3">
-                            <div className="w-2 h-2 bg-accent-green rounded-full mt-2 flex-shrink-0"></div>
-                            <span className="text-gray-700">{achievement}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    {reversedExperience[selectedJob].achievements.length > 0 && (
+                      <div className="mb-6">
+                        <h4 className="text-lg font-semibold text-gray-900 mb-4">Key Achievements</h4>
+                        <ul className="space-y-3">
+                          {reversedExperience[selectedJob].achievements.map((achievement, index) => (
+                            <li key={index} className="flex items-start gap-3">
+                              <div className="w-2 h-2 bg-accent-green rounded-full mt-2 flex-shrink-0"></div>
+                              <span className="text-gray-700">{achievement}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
 
                     {/* Technologies */}
                     <div>

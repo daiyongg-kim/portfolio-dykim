@@ -15,6 +15,8 @@ const Projects = () => {
       return 'Watch Demo Video'
     } else if (project.links.playStore.includes('play.google.com')) {
       return 'View on Play Store'
+    } else if (project.links.playStore.includes('apps.apple.com')) {
+      return 'View on App Store'
     } else {
       return 'View Project'
     }

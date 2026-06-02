@@ -42,11 +42,22 @@ export const aboutContent = {
 
 export const experienceData = [
   {
+    id: 0,
+    title: "Senior Mobile Engineer",
+    company: "Hyundai AutoEver America",
+    location: "Irvine, CA",
+    duration: "Jun. 2026 - Present",
+    type: "Full-time",
+    description: "Building Android applications for connected vehicle and mobility services.",
+    achievements: [],
+    technologies: ["Android", "Kotlin", "Automotive", "Connected Car"]
+  },
+  {
     id: 1,
     title: "Sr. Software Engineer",
     company: "GIT America, Inc.",
     location: "Irvine, CA",
-    duration: "Sep. 2023 - Present",
+    duration: "Sep. 2023 - Feb. 2026",
     type: "Full-time",
     description: "Architecting end-to-end Android applications for Galaxy Tab diagnostic solutions and automotive inspection systems.",
     achievements: [
@@ -146,6 +157,18 @@ export const skillsData = {
     "TDD (Test-Driven Development)",
     "Problem Solving",
     "Cross-functional Collaboration"
+  ],
+  appleStack: [
+    "Swift",
+    "SwiftUI",
+    "UIKit",
+    "VisionKit",
+    "AVFoundation",
+    "PDFKit",
+    "Google AdMob",
+    "Xcode",
+    "TestFlight",
+    "App Store Connect"
   ]
 }
 
@@ -267,6 +290,126 @@ export const projectsData = [
     links: {
       playStore: "Samsung Galaxy",
       github: "Samsung Electronics"
+    },
+    status: "Published"
+  },
+  {
+    id: 6,
+    title: "VoiceNote+",
+    description: "Indie iOS app (SoSo Family) that converts voice to text instantly with on-device AI transcription, supporting 13 languages for fast, private note taking.",
+    image: "/api/placeholder/600/400",
+    tags: ["Swift", "SwiftUI", "Speech", "On-device AI", "AdMob"],
+    features: [
+      "Real-time speech-to-text transcription",
+      "Support for 13 languages",
+      "Privacy-focused on-device processing",
+      "Quick voice note capture",
+      "Published on the App Store (iOS 17+)"
+    ],
+    metrics: {
+      users: "iOS 17+",
+      rating: "Utilities",
+      downloads: "Free"
+    },
+    links: {
+      playStore: "https://apps.apple.com/app/id6757351644",
+      github: "https://sosofamily.ca"
+    },
+    status: "Published"
+  },
+  {
+    id: 7,
+    title: "FitnessLog",
+    description: "Indie iOS app (SoSo Family) for tracking workouts and monitoring fitness progress with custom routines and progress charts.",
+    image: "/api/placeholder/600/400",
+    tags: ["Swift", "SwiftUI", "HealthKit", "Charts"],
+    features: [
+      "Workout and exercise logging",
+      "Custom training routines",
+      "Progress charts and history",
+      "Clean, focused fitness UX",
+      "Published on the App Store (iOS 17+)"
+    ],
+    metrics: {
+      users: "iOS 17+",
+      rating: "Health & Fitness",
+      downloads: "Free"
+    },
+    links: {
+      playStore: "https://apps.apple.com/us/app/fitnesslog-workout-tracker/id6757098098",
+      github: "https://sosofamily.ca"
+    },
+    status: "Published"
+  },
+  {
+    id: 8,
+    title: "SnapTip",
+    description: "Indie iOS app (SoSo Family) that scans receipts, calculates tips instantly, and splits bills using on-device vision and OCR.",
+    image: "/api/placeholder/600/400",
+    tags: ["Swift", "SwiftUI", "VisionKit", "OCR"],
+    features: [
+      "Receipt scanning with VisionKit",
+      "Instant tip calculation",
+      "Bill splitting between people",
+      "Custom tip percentages",
+      "Published on the App Store (iOS 15+)"
+    ],
+    metrics: {
+      users: "iOS 15+",
+      rating: "Utilities",
+      downloads: "Free"
+    },
+    links: {
+      playStore: "https://apps.apple.com/us/app/snaptip/id6757663321",
+      github: "https://sosofamily.ca"
+    },
+    status: "Published"
+  },
+  {
+    id: 9,
+    title: "Qrra",
+    description: "Indie iOS app (SoSo Family) to scan and generate QR codes instantly, with quick sharing and search.",
+    image: "/api/placeholder/600/400",
+    tags: ["Swift", "SwiftUI", "AVFoundation"],
+    features: [
+      "Fast QR code scanning",
+      "QR code generation",
+      "Social sharing of codes",
+      "Quick search of scanned items",
+      "Published on the App Store (iOS 17+)"
+    ],
+    metrics: {
+      users: "iOS 17+",
+      rating: "Utilities",
+      downloads: "Free"
+    },
+    links: {
+      playStore: "https://apps.apple.com/app/qrra/id6757939932",
+      github: "https://sosofamily.ca"
+    },
+    status: "Published"
+  },
+  {
+    id: 10,
+    title: "Scanory",
+    description: "Indie iOS app (SoSo Family) that scans documents and saves them as PDF instantly, with multi-page support and folder organization.",
+    image: "/api/placeholder/600/400",
+    tags: ["Swift", "SwiftUI", "VisionKit", "PDFKit"],
+    features: [
+      "Document scanning with VisionKit",
+      "Export to PDF",
+      "Multi-page document support",
+      "Folder-based organization",
+      "Published on the App Store (iOS 16+)"
+    ],
+    metrics: {
+      users: "iOS 16+",
+      rating: "Productivity",
+      downloads: "Free"
+    },
+    links: {
+      playStore: "https://apps.apple.com/app/scanory/id6759507936",
+      github: "https://sosofamily.ca"
     },
     status: "Published"
   }
