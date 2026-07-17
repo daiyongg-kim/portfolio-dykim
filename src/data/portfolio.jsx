@@ -412,6 +412,30 @@ export const projectsData = [
       github: "/ios-apps.html"
     },
     status: "Published"
+  },
+  {
+    id: 11,
+    title: "App Review Digest",
+    description: "Personal analytics project that automatically aggregates public App Store and Google Play reviews for the Kia Access app. Builds daily, weekly, and monthly rollups with star-rating trends, sentiment breakdowns, and 'attention needed' alerts for low-rated feedback.",
+    image: "/api/placeholder/600/400",
+    tags: ["Data Pipeline", "Appbot API", "Sentiment Analysis", "GitHub Actions", "Dashboard", "Automation"],
+    features: [
+      "Automated daily / weekly / monthly review aggregation",
+      "App Store & Google Play rating trend charts",
+      "Sentiment analysis with low-rating alerts",
+      "Developer-response tracking per review",
+      "Auto-deployed via GitHub Actions to a live dashboard"
+    ],
+    metrics: {
+      users: "iOS + Play",
+      rating: "Daily Sync",
+      downloads: "Live"
+    },
+    links: {
+      playStore: "https://appbot.daiyongkim.com",
+      github: "https://github.com/daiyongg-kim/appbot-digest"
+    },
+    status: "Published"
   }
 ]
 
