@@ -436,6 +436,30 @@ export const projectsData = [
       github: "https://github.com/daiyongg-kim/appbot-digest"
     },
     status: "Published"
+  },
+  {
+    id: 12,
+    title: "LeetCode Daily Jump",
+    description: "A one-hop bookmark for daily algorithm practice. Opening leetcode.daiyongkim.com lands you straight on today's LeetCode Daily Coding Challenge — no problemset browsing, no extra clicks. LeetCode only exposes the daily problem through GraphQL, which browsers can't call directly, so a scheduled job resolves it server-side and bakes the answer into a static page that redirects instantly.",
+    image: "/api/placeholder/600/400",
+    tags: ["GitHub Actions", "GraphQL", "Static Site", "Automation", "Cron", "GitHub Pages"],
+    features: [
+      "Instant redirect to the current LeetCode daily challenge",
+      "Hourly cron resolves the problem via LeetCode's GraphQL API",
+      "Zero request-time work — fully static, no server or cold starts",
+      "Graceful fallback to the problemset page if a build is late",
+      "Custom subdomain on GitHub Pages with enforced HTTPS"
+    ],
+    metrics: {
+      users: "Daily",
+      rating: "0ms Runtime",
+      downloads: "Live"
+    },
+    links: {
+      playStore: "https://leetcode.daiyongkim.com",
+      github: "https://github.com/daiyongg-kim/leetcode-daily"
+    },
+    status: "Published"
   }
 ]
 
