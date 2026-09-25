@@ -1,5 +1,17 @@
 # Worklog — portfolio-dykim
 
+## 2026-09-24 — 메타 경력 정합·OG 이미지·파비콘·제품 링크 (마케팅 진단 B06)
+
+- **요청**: 마케팅 인계 계획 P1 진행("다른것 부터 할수 있으면 하자")
+- **결과**:
+  - `index.html` title/meta/OG/Twitter/JSON-LD의 "10+ years" → **15+** (본문·`portfolio.jsx` 경력 Mar 2010~ 기준과 일치). Contact 섹션 "10+ years of Android" → 15+. "10+ Team Members Led"는 별개 지표라 유지
+  - `public/og-image.jpg`(1200×630) 신규 — 기존 메타가 가리키던 파일이 404였음
+  - `public/favicon.svg`(DK, primary #0284c7) 신규, `vite.svg` 참조 교체
+  - 앱 카드 App Store 링크 5개에 `ct=portfolio-<앱>` 부여, FitnessLog iOS 15+ → 17+
+  - Footer Quick Links에 SoSo Family(UTM `utm_source=daiyongkim&utm_medium=referral`)·Blog 링크 추가
+  - `vite build` 임시 폴더 출력으로 검증. 기존 미커밋 `dist/`·`.agents/`·`skills-lock.json`은 건드리지 않음
+- **남은 일**: 390px에서 398px 가로 넘침 원인 미조사
+
 ## 2026-07-17 — Projects에 "App Review Digest"(appbot-digest) 카드 추가
 - **요청**: appbot-digest 대시보드를 서브도메인(appbot.daiyongkim.com)으로 연결하고, 포트폴리오 Projects 섹션에 카드로 노출.
 - **결과**:

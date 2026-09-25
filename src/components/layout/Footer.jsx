@@ -64,6 +64,16 @@ const Footer = () => {
                   </a>
                 </li>
               ))}
+              <li>
+                <a href="https://sosofamily.ca/?utm_source=daiyongkim&utm_medium=referral&utm_campaign=portfolio" className="text-gray-400 hover:text-white transition-colors duration-200">
+                  SoSo Family apps
+                </a>
+              </li>
+              <li>
+                <a href="https://blog.daiyongkim.com/" className="text-gray-400 hover:text-white transition-colors duration-200">
+                  Blog
+                </a>
+              </li>
             </ul>
           </div>
 

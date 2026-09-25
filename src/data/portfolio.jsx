@@ -312,7 +312,7 @@ export const projectsData = [
       downloads: "Free"
     },
     links: {
-      playStore: "https://apps.apple.com/app/id6757351644",
+      playStore: "https://apps.apple.com/app/id6757351644?ct=portfolio-voicenote",
       github: "/ios-apps.html"
     },
     status: "Published"
@@ -328,15 +328,15 @@ export const projectsData = [
       "Custom training routines",
       "Progress charts and history",
       "Clean, focused fitness UX",
-      "Published on the App Store (iOS 15+)"
+      "Published on the App Store (iOS 17+)"
     ],
     metrics: {
-      users: "iOS 15+",
+      users: "iOS 17+",
       rating: "Health & Fitness",
       downloads: "Free"
     },
     links: {
-      playStore: "https://apps.apple.com/us/app/fitnesslog-workout-tracker/id6757098098",
+      playStore: "https://apps.apple.com/us/app/fitnesslog-workout-tracker/id6757098098?ct=portfolio-fitnesslog",
       github: "/ios-apps.html"
     },
     status: "Published"
@@ -360,7 +360,7 @@ export const projectsData = [
       downloads: "Free"
     },
     links: {
-      playStore: "https://apps.apple.com/us/app/snaptip/id6757663321",
+      playStore: "https://apps.apple.com/us/app/snaptip/id6757663321?ct=portfolio-snaptip",
       github: "/ios-apps.html"
     },
     status: "Published"
@@ -384,7 +384,7 @@ export const projectsData = [
       downloads: "Free"
     },
     links: {
-      playStore: "https://apps.apple.com/app/qrra/id6757939932",
+      playStore: "https://apps.apple.com/app/qrra/id6757939932?ct=portfolio-qrra",
       github: "/ios-apps.html"
     },
     status: "Published"
@@ -408,7 +408,7 @@ export const projectsData = [
       downloads: "Free"
     },
     links: {
-      playStore: "https://apps.apple.com/app/scanory/id6759507936",
+      playStore: "https://apps.apple.com/app/scanory/id6759507936?ct=portfolio-scanory",
       github: "/ios-apps.html"
     },
     status: "Published"

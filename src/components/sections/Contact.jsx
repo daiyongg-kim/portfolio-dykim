@@ -380,7 +380,7 @@ const Contact = () => {
             <div className="max-w-4xl mx-auto">
               <h3 className="text-2xl font-bold mb-4">Ready to Transform Your Mobile Vision?</h3>
               <p className="text-primary-100 mb-6 text-lg">
-                With 10+ years of Android expertise and a track record of successful apps serving millions of users, 
+                With 15+ years of Android expertise and a track record of successful apps serving millions of users, 
                 I'm here to help you build something extraordinary. Whether you need a new app, want to enhance an existing one, 
                 or require technical leadership for your team, let's discuss how we can achieve your goals together.
               </p>
