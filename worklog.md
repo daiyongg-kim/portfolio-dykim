@@ -1,5 +1,10 @@
 # Worklog — portfolio-dykim
 
+## 2026-09-25 — App Store 링크에 provider token(pt)
+
+- **요청**: Qrra 성장 계획 검토 후 "모두 하자"
+- **결과**: 앱 카드 5개 링크를 `?pt=128397788&ct=portfolio-<앱>&mt=8`로. ct만으로는 Apple 캠페인 귀속이 안 됐다(MarketingTeam 기록 참조)
+
 ## 2026-09-24 — 메타 경력 정합·OG 이미지·파비콘·제품 링크 (마케팅 진단 B06)
 
 - **요청**: 마케팅 인계 계획 P1 진행("다른것 부터 할수 있으면 하자")

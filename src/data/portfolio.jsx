@@ -312,7 +312,7 @@ export const projectsData = [
       downloads: "Free"
     },
     links: {
-      playStore: "https://apps.apple.com/app/id6757351644?ct=portfolio-voicenote",
+      playStore: "https://apps.apple.com/app/id6757351644?pt=128397788&ct=portfolio-voicenote&mt=8",
       github: "/ios-apps.html"
     },
     status: "Published"
@@ -336,7 +336,7 @@ export const projectsData = [
       downloads: "Free"
     },
     links: {
-      playStore: "https://apps.apple.com/us/app/fitnesslog-workout-tracker/id6757098098?ct=portfolio-fitnesslog",
+      playStore: "https://apps.apple.com/us/app/fitnesslog-workout-tracker/id6757098098?pt=128397788&ct=portfolio-fitnesslog&mt=8",
       github: "/ios-apps.html"
     },
     status: "Published"
@@ -360,7 +360,7 @@ export const projectsData = [
       downloads: "Free"
     },
     links: {
-      playStore: "https://apps.apple.com/us/app/snaptip/id6757663321?ct=portfolio-snaptip",
+      playStore: "https://apps.apple.com/us/app/snaptip/id6757663321?pt=128397788&ct=portfolio-snaptip&mt=8",
       github: "/ios-apps.html"
     },
     status: "Published"
@@ -384,7 +384,7 @@ export const projectsData = [
       downloads: "Free"
     },
     links: {
-      playStore: "https://apps.apple.com/app/qrra/id6757939932?ct=portfolio-qrra",
+      playStore: "https://apps.apple.com/app/qrra/id6757939932?pt=128397788&ct=portfolio-qrra&mt=8",
       github: "/ios-apps.html"
     },
     status: "Published"
@@ -408,7 +408,7 @@ export const projectsData = [
       downloads: "Free"
     },
     links: {
-      playStore: "https://apps.apple.com/app/scanory/id6759507936?ct=portfolio-scanory",
+      playStore: "https://apps.apple.com/app/scanory/id6759507936?pt=128397788&ct=portfolio-scanory&mt=8",
       github: "/ios-apps.html"
     },
     status: "Published"
